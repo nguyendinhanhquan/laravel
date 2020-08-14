@@ -52,94 +52,32 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src={{ asset('dist/img/user1-128x128.jpg') }} alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-
-                                <img src={{ asset('dist/img/user8-128x128.jpg') }} alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-
-                                <img src={{ asset('dist/img/user3-128x128.jpg') }} alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i
-                                                class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
+               
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <span class="badge badge-danger navbar-badge">{{$dayoff + $overtime}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <span class="dropdown-item dropdown-header">{{$dayoff + $overtime}} Notifications</span>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
+                        <a href="{{ url('dayoff') }}" class="dropdown-item">
+                            <i class="fas fa-calendar-day mr-2"></i> {{$dayoff}} Dayoff requests
+                            {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
+                        <a href="{{ url('list-task') }}" class="dropdown-item">
+                            <i class="fas fa-clock mr-2"></i> {{$overtime}} Overtime requests
+                            {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
                         </a>
-                        <div class="dropdown-divider"></div>
+                        {{-- <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-file mr-2"></i> 3 new reports
                             <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
+                        </a> --}}
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
                     </div>
                 </li>
 
@@ -162,7 +100,7 @@
                     </div>
                     <div class="info">
 
-                        <a href="/admin" class="d-block">
+                        <a href="{{ asset('/admin')}}" class="d-block">
                             @if (Session::get('username'))
                                 <h5> {{ Session::get('username') }} </h5>
                             @endif
@@ -175,7 +113,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ url('home') }}" class="nav-link">
+                            <a href="{{ url('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-home "></i>
                                 <p>
                                     Home
@@ -185,7 +123,7 @@
 
 
                         <li class="nav-item">
-                            <a href="{{ url('admin') }}" class="nav-link">
+                            <a href="{{ url('admin') }}" class="nav-link {{ Request::is('admin') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-info "></i>
                                 <p>
                                     Admin
@@ -193,8 +131,53 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ url('user') }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-star"></i>
+                                <p>
+                                    Staff
+                                </p>
+                            </a>
+                        </li>
+
+                        
+
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link
+                            {{ Request::is('salary') ? 'active' : '' }}
+                            {{ Request::is('salary-basic') ? 'active' : '' }}
+                            ">
+                                <i class="nav-icon fas fa-money-check-alt"></i>
+                                <p>
+                                    Salary
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                
+                                <li class="nav-item">
+                                    <a href="{{ url('salary-basic') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Salary Basic</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('salary/month/'.now()->month ) }}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Salary of Staff 
+                                        </p>
+                                    </a>
+                                </li>   
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link
+                            {{ Request::is('list-task') ? 'active' : '' }}
+                            {{ Request::is('total-overtime') ? 'active' : '' }}
+                            ">
                                 <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     Overtime
@@ -220,7 +203,10 @@
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link
+                            {{ Request::is('dayoff') ? 'active' : '' }}
+                            {{ Request::is('dayoff_to_year') ? 'active' : '' }}
+                            ">
                                 <i class="nav-icon fas fa-address-book"></i>
                                 <p>
                                     Dayoff
@@ -231,7 +217,13 @@
                                 <li class="nav-item">
                                     <a href="{{ url('dayoff') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Detail To Day</p>
+                                        <p>List dayoff</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('dayoff_to_month') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Detail To Month</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -244,33 +236,41 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ url('/user') }}" class="nav-link">
-                                <i class="nav-icon fas fa-star"></i>
+                        
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link
+                            {{ Request::is('logout') ? 'active' : '' }}
+                            {{ Request::is('password') ? 'active' : '' }}
+                            ">
+                                {{-- <i class="nav-icon fas fa-address-book"></i> --}}
+                                <i class="nav-icon fas fa-cog"></i>
                                 <p>
-                                    Staff
+                                    Option
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                
+                                <li class="nav-item">
+                                    <a href="{{ url('password') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Change password</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('logout') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Logout
+                                        </p>
+                                    </a>
+                                </li>
+
+                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ url('/salary') }}" class="nav-link">
-                                <i class="nav-icon fas fa-money-check-alt"></i>
-                                <p>
-                                    Salary
-                                </p>
-                            </a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a href="{{ url('logout') }}" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>
-                                    Logout
-                                </p>
-                            </a>
-                        </li>
+                        
 
                     </ul>
                 </nav>

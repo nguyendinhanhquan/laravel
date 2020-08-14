@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Users;
 use App\Dayoff;
-use App\User_role;
-
 
 
 class UserController extends Controller
@@ -17,7 +15,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+    
   
     public function index()
     {
@@ -114,7 +112,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $destinationPath = public_path().'/image/';
-            $filename= '../image/'.$file->getClientOriginalName();;
+            $filename= '/image/'.$file->getClientOriginalName();;
             $file->move($destinationPath, $filename);
             $user->avatar=$filename;
 

@@ -17,18 +17,6 @@ class OvertimeController extends Controller
      */
     public function total()
     {
-        //
-        // $id = session('id');
-        // $data = DB::table('overtime_tbl')
-        // ->select( DB::raw('
-        // YEAR(date_ot) as year , 
-        // MONTH(date_ot) as month , 
-        // SUM(total_time) AS total'))
-        // ->groupBy('year','month')
-        // ->get();
-        // return view('user.overtime.total_time',['data'=>$data]);
-
-
         $data = DB::table('users_tbl')
             ->join('overtime_tbl', 'users_tbl.id', '=', 'overtime_tbl.user_id')
             ->select( DB::raw('
@@ -46,13 +34,14 @@ class OvertimeController extends Controller
     public function index()
     {
         //
-        // $data = Overtime::get();
-        // return view('user.overtime.my_task',['data'=>$data]);
+       
 
         $data = DB::table('users_tbl')
             ->join('overtime_tbl', 'users_tbl.id', '=', 'overtime_tbl.user_id')
             ->select('users_tbl.fullname', 'overtime_tbl.*')
+            ->orderBy('id', 'desc')
             ->get();
+
         return view('admin.overtime.list_task',['data'=>$data]);
     }
 

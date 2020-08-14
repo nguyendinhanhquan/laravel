@@ -1,10 +1,6 @@
-.wh-300{
-    width: 300px;
-    height: 300px;
-}
 
 .wh-300 img{
-    width: 100%  ;
+    width: 300px  ;
     height: 300px;
     object-fit: cover;
 }
@@ -29,6 +25,8 @@
 }
 
 
+
+
 .card-primary.card-outline{
     border-top: 3px solid #343a40 !important;
 }
@@ -37,6 +35,57 @@
     width: 50px;
 }
 
-/* .nav-link .active{
-    background-color: rgba(255,255,255,.1);
-} */
+.active{
+    background-color: rgba(255,255,255,.1) !important;
+}
+
+.btn-custom a{
+    padding: 0;
+}
+
+.btn-custom a i{
+    width: 50px;
+    height: 45px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option a:hover,
+.option button:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.option a,
+.option button{
+    margin: 2px !important;
+}
+
+
+.salary{
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.salary a{
+    background-color: #343a40;
+    color: white;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border-radius: .25rem;
+    margin: .5rem;
+}
+
+.salary a.active{
+    background-color: #17a2b8!important;
+}
+
+.salary a:hover{
+    color: white;
+    transform: scale(1.1);
+    transition: .5s;
+}

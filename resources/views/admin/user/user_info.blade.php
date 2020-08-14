@@ -24,16 +24,15 @@
 <div class="container-fluid">
 <div class="row">
    @foreach ($item as $item)
-       
-    <div class="col-md-12 d-flex">
-    
-
       <!-- Profile Image -->
-      <div class="card card-primary card-outline col-md-3">
+       
+    <div class="col-md-3 ">
+    
+      <div class="card card-primary card-outline ">
         <div class="card-body box-profile">
           <div class="text-center wh-300 mx-auto">
             <img class="profile-user-img img-fluid img-circle"
-                src="{{$item->avatar}}"
+                src="{{ asset($item->avatar)}}"
                 alt="User profile picture">
           </div>
 
@@ -67,7 +66,7 @@
             
           </ul>
 
-          <a href="/edit/{{$item->id}}" class="btn btn-primary btn-block bg-color"><b>Edit</b></a>
+          <a href="{{ url('/edit/'.$item->id) }}" class="btn btn-primary btn-block bg-color"><b>Edit</b></a>
           @if ($item->id != 1)
               <a href="/user/active/{{$item->id}}" class="btn btn-success btn-block "><b>Active</b></a>
               <a href="/user/disable/{{$item->id}}" class="btn btn-danger btn-block "><b>Disable</b></a>
@@ -77,90 +76,90 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-
-      <!-- About Me Box -->
-      <div class="card card-primary col-md-9 mx-2">
-        <div class="card-header bg-color">
-          <h3 class="card-title ">About Me</h3>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <strong><i class="fas fa-book mr-1"></i> University</strong>
-
-          <p class="text-muted">
-            {{$item->university}}
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-graduation-cap mr-1"></i> Year Of Gradute</strong>
-
-          <p class="text-muted">
-            {{$item->year_of_graduate}}
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-map-marker-alt mr-1"></i> Adress </strong>
-
-          <p class="text-muted">
-            {{$item->address}}
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-envelope mr-1"></i> Email </strong>
-
-          <p class="text-muted">
-            {{$item->email}}
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-id-card mr-1"></i> Identity Card</strong>
-
-          <p class="text-muted">
-            {{$item->identity_card}}
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-map-marker-alt mr-1"></i> Issue Place</strong>
-
-          <p class="text-muted">
-            {{$item->issue_place}}
-            
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-calendar-alt mr-1"></i></i> Issue Date</strong>
-
-          <p class="text-muted">
-            {{date_format(date_create($item->issue_date), 'd-m-Y')}}
-
-          </p>
-
-          <hr>
-
-          <strong><i class="fas fa-award mr-1"></i> Start Job </strong>
-
-          <p class="text-muted">
-            {{date_format(date_create($item->start_job_at_company), 'd-m-Y')}}
-          </p>
-
-          <hr>
-
-          
-
-          <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-          <p class="text-muted">{{$item->note}}</p>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+      
     </div>
+    <!-- About Me Box -->
+    <div class="card card-primary col-md-9">
+      <div class="card-header bg-color">
+        <h3 class="card-title ">About Me</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <strong><i class="fas fa-book mr-1"></i> University</strong>
+
+        <p class="text-muted">
+          {{$item->university}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-graduation-cap mr-1"></i> Year Of Gradute</strong>
+
+        <p class="text-muted">
+          {{$item->year_of_graduate}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-map-marker-alt mr-1"></i> Adress </strong>
+
+        <p class="text-muted">
+          {{$item->address}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-envelope mr-1"></i> Email </strong>
+
+        <p class="text-muted">
+          {{$item->email}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-id-card mr-1"></i> Identity Card</strong>
+
+        <p class="text-muted">
+          {{$item->identity_card}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-map-marker-alt mr-1"></i> Issue Place</strong>
+
+        <p class="text-muted">
+          {{$item->issue_place}}
+          
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-calendar-alt mr-1"></i></i> Issue Date</strong>
+
+        <p class="text-muted">
+          {{date_format(date_create($item->issue_date), 'd-m-Y')}}
+
+        </p>
+
+        <hr>
+
+        <strong><i class="fas fa-award mr-1"></i> Start Job </strong>
+
+        <p class="text-muted">
+          {{date_format(date_create($item->start_job_at_company), 'd-m-Y')}}
+        </p>
+
+        <hr>
+
+        
+
+        <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+        <p class="text-muted">{{$item->note}}</p>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
    @endforeach
     
 </div>

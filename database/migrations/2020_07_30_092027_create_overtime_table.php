@@ -26,6 +26,8 @@ class CreateOvertimeTable extends Migration
             $table->string('take_note')->nullable();
             $table->string('feedback')->nullable();
             $table->boolean('status')->nullable();
+            $table->integer('month')->nullable();
+            $table->integer('year')->nullable();
             $table->timestamps();
         });
     }

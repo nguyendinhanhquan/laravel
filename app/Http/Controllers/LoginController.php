@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Users;
 use App\User_Login;
 use App\User_role;
+use App\Salary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -31,24 +32,31 @@ class LoginController extends Controller
         $user = new Users;
         if ($request->password == $request->password2) {
             $userCheck = Users::where('username', $request->username)->count();
+            $emailCheck = Users::where('email', $request->email)->count();
             if ($userCheck > 0) {
                 $request->session()->flash('status', 'Account already exists !!!');
                 return redirect('register');
-            } else {
+            } else if($emailCheck > 0)
+            {
+                $request->session()->flash('status', 'Email already exists !!!');
+                return redirect('register');
+            }else 
+            {
                 //------------------- Users_tbl ------------------
                 $request->validate([
                     'username' => 'required',
-                    'password' => 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/',
+                    'password' => 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/',
                 ], [
                     'username.required' => 'Name is required',
-                    'password.regex' => 'Password must more 6 character, at least one uppercase letter, a normal letter, a number and a special character',
+                    'password.regex' => 'Password minimum 7 character, at least one uppercase letter, one number and one special character',
+                    
                 ]);
                 $user->fullname = $request->username;
                 $user->username = $request->username;
                 $user->email = $request->email;
                 $user->password = Hash::make($request->password);
 
-                $filename = '../image/macdinh.jpg';
+                $filename = '/image/macdinh.jpg';
                 $user->avatar = $filename;
                 $user->phone = 'unknow';
                 $user->address = 'unknow';
@@ -57,14 +65,14 @@ class LoginController extends Controller
                 $user->university = 'unknow';
                 $user->year_of_graduate = 'unknow';
                 $user->note = 'unknow';
-
+            
                 $user->save();
 
                 //save session uesername & id
                 $user = Users::where('username', $request->username)->get();
                 $request->session()->put('id', $user[0]->id);
                 $request->session()->put('username', $request->username);
-
+                
                 //------------------- User_role_tbl ------------------
                 $userRole = new User_role;
                 $userRole->role_id = 1;
@@ -72,6 +80,11 @@ class LoginController extends Controller
                 $userRole->status = 1;
                 $userRole->save();
 
+                //------------------- User_role_tbl ------------------
+                $salary = new Salary;
+                $salary->user_id = $user[0]->id;
+                $salary->save();
+                
                 return redirect('login');
             }
 
@@ -80,6 +93,8 @@ class LoginController extends Controller
             return redirect('register');
         }
     }
+
+    
 
     public function login(Request $request)
     {
@@ -93,12 +108,14 @@ class LoginController extends Controller
                 if ($userStatus[0]->status === 1) {
                     $request->session()->put('username', $request->username);
                     $request->session()->put('id', $user[0]->id);
-
+                    $request->session()->put('avatar', $user[0]->avatar);
                     $login_time = Carbon::now()->toDateTimeString();
                     $userLogin = new User_Login();
                     $userLogin->user_id = $user[0]->id;
                     $userLogin->login_time = $login_time;
                     $userLogin->ip_login = $request->getClientIp(true);
+
+                    
                     $userLogin->save();
 
                     return redirect('home');

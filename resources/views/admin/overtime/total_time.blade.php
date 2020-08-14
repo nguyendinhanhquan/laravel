@@ -50,22 +50,6 @@
                     <td>{{$item->year}}</td>
                     <td>{{$item->month}}</td>
                     <td>{{$item->total}} Minutes</td>
-                    {{-- <td class="text-center">
-              
-                        @if ($item->status === 1 )
-                           <p class="text-success"> <i class="fas fa-check"></i></p>
-                        @elseif ($item->status === 0 )
-                            <p class="text-danger"><i class="fas fa-times"></i></p>
-                        @else
-                            <p class="text-info">Wating ...</p>
-                        @endif
-        
-                      </td>
-                      <td class="option">
-                        <a href="#" class="btn btn-primary bg-color">
-                          <i class="fas fa-trash"></i>
-                        </a>
-                      </td> --}}
                   </tr>
                   @endforeach
 
@@ -87,10 +71,6 @@
 
 @section('script')
 
-<!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- DataTables -->
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>

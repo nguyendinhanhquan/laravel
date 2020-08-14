@@ -38,6 +38,7 @@ class DayoffController extends Controller
         $data = DB::table('users_tbl')
             ->join('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
             ->select('users_tbl.fullname', 'dayoff_tbl.*')
+            ->orderBy('id', 'desc')
             ->get();
         return view('admin.dayoff.dayoff',['data'=>$data]);
     }
@@ -54,8 +55,7 @@ class DayoffController extends Controller
         return view('admin.dayoff.show_dayoff_confirm',['items'=>$data]);
     }
 
-
-    public function indexDayOffToYear()
+    public function indexDayOffToMonth()
     {
         //
         $data = DB::table('users_tbl')
@@ -63,9 +63,29 @@ class DayoffController extends Controller
             ->select( DB::raw('
             fullname,
             YEAR(start_date) as year , 
+            MONTH(start_date) as month , 
+            SUM(number_day_off) AS totalDay'))
+            ->groupBy('year','month','user_id')
+            ->get();
+
+        return view('admin.dayoff.show_dayoff_to_month',['data'=>$data]);
+    }
+
+
+    public function indexDayOffToYear()
+    {
+       
+        //
+        $data = DB::table('users_tbl')
+            ->leftJoin('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
+            ->select( DB::raw('
+            fullname,
+            YEAR(start_date) as year , 
             SUM(number_day_off) AS totalDay'))
             ->groupBy('year','fullname')
             ->get();
+
+        // dd($data);
         return view('admin.dayoff.show_dayoff_to_year',['data'=>$data]);
     }
     /**

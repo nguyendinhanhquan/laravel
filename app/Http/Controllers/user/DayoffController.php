@@ -69,7 +69,7 @@ class DayoffController extends Controller
     {
         //
         $id = session('id');
-        $data = Dayoff::where('user_id',$id)->get();
+        $data = Dayoff::where('user_id',$id)->orderBy('id', 'desc')->get();
         return view('user.dayoff.show_dayoff',['data'=>$data]);
     }
 
@@ -98,6 +98,7 @@ class DayoffController extends Controller
         
         $startDate = date_format(date_create($startDate),'Y-m-d');
         $endDate = date_format(date_create($endDate),'Y-m-d');
+        // dd($startDate < $endDate);
 
         if($startDate < $endDate){
             //Tính số ngày nghỉ
@@ -117,7 +118,7 @@ class DayoffController extends Controller
         }else
         {
             $request->session()->flash('status','Selecting invalid date');
-            return redirect('user_create_dayoff');
+            return view('user.dayoff.new_dayoff');
         };
     }
 

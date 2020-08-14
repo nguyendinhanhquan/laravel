@@ -77,6 +77,7 @@
                             </div>
                         </div>
                     </div>
+                    <p class="text-info" style="font-size: 16px">Password minimum 7 character, at least one uppercase letter, one number and one special character</p>
                     <div class="row">
                         
                         <div class="col-12">
