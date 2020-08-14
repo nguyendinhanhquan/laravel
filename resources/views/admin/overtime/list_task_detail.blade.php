@@ -36,20 +36,7 @@
                     @foreach ($data as $item)
 
                         <div class="card-body ">
-                            {{-- <strong><i class="fas fa-check-circle"></i> Status</strong>
-
-                            @if ($item->status === 1)
-                                <p class="text-success"> <i class="fas fa-check"></i></p>
-                            @elseif ($item->status === 0 )
-                                <p class="text-danger"><i class="fas fa-times"></i></p>
-                            @else
-                                <p class="text-info">Wating ...</p>
-                            @endif
-
-
-                            
-
-                            <hr> --}}
+                         
 
                             <strong><i class="fas fa-calendar-alt"></i> Date OT</strong>
 
@@ -146,17 +133,7 @@
 
                             </form>
 
-                            {{-- <strong><i class="fas fa-check-double"></i> Action</strong>
-
-                            <div class="option d-flex my-2 justify-content-around">
-                                <a href="{{ $item->id }}/yes" class="btn btn-primary bg-success border-0  w-25">
-                                    <i class="fas fa-check"></i>
-                                </a>
-                                <a href="{{ $item->id }}/no" class="btn btn-primary bg-danger border-0  w-25">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </div>
-                            <hr> --}}
+                          
                         </div>
 
 
@@ -171,10 +148,6 @@
 
         </div>
     </div>
-
-
-
-
 @endsection
 
 

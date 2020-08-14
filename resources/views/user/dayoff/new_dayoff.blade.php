@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('user_home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -39,8 +39,9 @@
                     <form role="form" action="user_create_dayoff" method="post" enctype="multipart/form-data">
 
                         @csrf
+
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label for="exampleInputEmail1">ID</label>
                                 <input type="text" class="form-control" id="IDNV" value="{{ Session::get('id') }}" disabled>
                             </div>
@@ -58,6 +59,22 @@
                                 </div>
                             </div>
 
+                            {{-- <!-- /.form group -->
+                            <!-- Date range -->
+                            <div class="form-group">
+                                <label>Date range:</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control float-right" id="reservation">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <!-- /.form group --> --}}
 
 
                             <!-- Date -->
@@ -127,6 +144,9 @@
             $('#reservationdate2').datetimepicker({
                 format: "DD-MM-YYYY",
             })
+
+            //Date range picker
+            $('#reservation').daterangepicker()
         });
 
     </script>

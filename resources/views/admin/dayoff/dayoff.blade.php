@@ -1,6 +1,5 @@
 @extends('admin.layout')
 
-
 @section('content-header')
 
     <div class="content-header">
@@ -71,9 +70,15 @@
                                             @endif
 
                                         </td>
-                                        <td class="option ">
-                                            <a href="dayoff/{{ $item->id }}" class="btn btn-primary bg-color mx-1">
+                                        <td class="option btn-custom">
+                                            {{-- <a href="dayoff/{{ $item->id }}" class="btn btn-primary bg-color mx-1">
                                                 <i class="fas fa-info-circle"></i>
+                                            </a> --}}
+                                            <a href="dayoff/{{ $item->id }}/yes" class="btn btn-primary bg-color mx-1 bg-success">
+                                                <i class="fas fa-check"></i>
+                                            </a>
+                                            <a href="dayoff/{{ $item->id }}/no" class="btn btn-primary bg-color mx-1 bg-danger">
+                                                <i class="fas fa-times"></i>
                                             </a>
 
 
@@ -151,10 +156,6 @@
 
     @section('script')
 
-        <!-- jQuery -->
-        <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- DataTables -->
         <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -171,7 +172,8 @@
                 $("#example1").DataTable({
                     "responsive": true,
                     "autoWidth": false,
-                    "searching": false,
+                    "searching": true,
+                    "order": [[ 0, "desc" ]]
                 });
                 $('#example2').DataTable({
                     "paging": true,
@@ -188,7 +190,6 @@
             function deleteJS(id) {
                 $('.modal').modal();
                 $("#delete").click(function() {
-                    console.log(id);
                     window.location.href = 'dayoff/delete/' + id;
                 })
 

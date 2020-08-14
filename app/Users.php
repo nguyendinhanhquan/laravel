@@ -15,4 +15,9 @@ class Users extends Model
     //     return $this->hasMany('App\Dayoff','user_id','id');
     // }
 
+    public function overtime()
+    {
+        return $this->hasMany('App\Overtime','user_id','id');
+    }
+
 }

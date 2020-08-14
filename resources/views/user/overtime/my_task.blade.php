@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('user_home') }}">Home</a></li>
                         <li class="breadcrumb-item active">My task</li>
                     </ol>
                 </div><!-- /.col -->
@@ -67,7 +67,7 @@
                                         @elseif ($item->status === 0 )
                                             <p class="text-danger"><i class="fas fa-times"></i></p>
                                         @else
-                                            <p class="text-info">Wating ...</p>
+                                            <b><p class="text-info">Wating ...</p></b>
                                         @endif
 
                                     </td>
@@ -117,10 +117,7 @@
 
 @section('script')
 
-    <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+   
     <!-- DataTables -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>

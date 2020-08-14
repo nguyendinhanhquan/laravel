@@ -1,4 +1,5 @@
 @extends('user.layout')
+
 @section('content-header')
 <div class="content-header">
   <div class="container-fluid">
@@ -8,7 +9,7 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('user_home') }}">Home</a></li>
           <li class="breadcrumb-item active">Detail Dayoff To Month</li>
         </ol>
       </div><!-- /.col -->
@@ -85,10 +86,7 @@
 
 @section('script')
 
-<!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 <!-- DataTables -->
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>

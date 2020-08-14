@@ -31,6 +31,8 @@
   <!-- DataTables -->
   <link rel="stylesheet" href={{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}>
   <link rel="stylesheet" href={{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}>
+  <!-- daterange picker -->
+  <link rel="stylesheet" href={{ asset("plugins/daterangepicker/daterangepicker.css") }}>
  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -48,7 +50,7 @@
 
     
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    {{-- <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -137,7 +139,7 @@
         </div>
       </li>
       
-    </ul>
+    </ul> --}}
   </nav>
   <!-- /.navbar -->
 
@@ -155,7 +157,7 @@
         </div>
         <div class="info">
 
-          <a href="/user_home" class="d-block">
+          <a href="{{ asset('/user_home')}}" class="d-block">
             @if(Session::get('username'))
                 <h5> {{Session::get('username')}} </h5>
             @endif
@@ -166,8 +168,8 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="{{ url('user_home') }}" class="nav-link">
+          <li class="nav-item ">
+            <a href="{{ url('user_home') }}" class="nav-link  {{ Request::is('user_home') ? 'active' : '' }}">
               <i class="nav-icon fas fa-home "></i>
               <p>
                 Home
@@ -177,7 +179,7 @@
 
           
           <li class="nav-item">
-            <a href="{{ url('user_info') }}" class="nav-link">
+            <a href="{{ url('user_info') }}" class="nav-link {{ Request::is('user_info') ? 'active' : '' }}">
               <i class="nav-icon fas fa-info "></i>
               <p>
                 Profile
@@ -187,7 +189,11 @@
 
          
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link 
+            {{ Request::is('new-task') ? 'active' : '' }}
+            {{ Request::is('my-task') ? 'active' : '' }}
+            {{ Request::is('total-time') ? 'active' : '' }}
+            ">
               <i class="nav-icon fas fa-clock"></i>
               <p>
                 Overtime
@@ -218,7 +224,12 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link
+            {{ Request::is('user-new-dayoff') ? 'active' : '' }}
+            {{ Request::is('user_show_dayoff') ? 'active' : '' }}
+            {{ Request::is('user_show_dayoff_to_month') ? 'active' : '' }}
+            {{ Request::is('user_show_dayoff_to_year') ? 'active' : '' }}
+            ">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
                 Dayoff
@@ -255,14 +266,38 @@
           </li>
 
 
-          <li class="nav-item">
-            <a href="{{ url('logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-              </p>
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link
+            {{ Request::is('password-user') ? 'active' : '' }}
+            ">
+                {{-- <i class="nav-icon fas fa-address-book"></i> --}}
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                    Option
+                    <i class="right fas fa-angle-left"></i>
+                </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+                
+                <li class="nav-item">
+                    <a href="{{ url('password-user') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Change password</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('logout') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                            Logout
+                        </p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
 
         </ul>
       </nav>
@@ -337,6 +372,10 @@
 <script src={{ asset("dist/js/pages/dashboard.js") }}></script>
 <!-- AdminLTE for demo purposes -->
 <script src={{ asset("dist/js/demo.js") }}></script>
+
+<!-- My Javascript -->
+<script src={{ asset("js/myjs.js") }}></script>
+
 
 <section class="header">
   @yield('header')

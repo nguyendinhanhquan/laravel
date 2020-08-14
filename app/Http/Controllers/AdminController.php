@@ -9,11 +9,14 @@ use App\Users;
 use App\User_role;
 use App\Dayoff;
 use App\Overtime;
-
+use App\Salary;
 
 class AdminController extends Controller
 {
-    public function home()
+
+   
+
+    public function home(Request $request)
     {
         $users = Users::count();
         $dayoff = Dayoff::select('id')
@@ -28,24 +31,28 @@ class AdminController extends Controller
             'users'=>$users,
             'dayoff'=>$dayoff,
             'overtime'=>$overtime,
-            'time'=>$time
+            'time'=>$time,
         ]);
     }
+
 
     public function active($id)
     {
         $user = User_role::find($id);
         $user->status = 1;
         $user->save();
-        return redirect('user/'.$id);
+        return redirect('user');
     }
 
     public function disable($id)
     {
         $user = User_role::find($id);
+        if($id == 1){
+            return redirect('user');
+        }
         $user->status = 0;
         $user->save();
-        return redirect('user/'.$id);
+        return redirect('user');
     }
 
 
@@ -62,6 +69,7 @@ class AdminController extends Controller
         $users = DB::table('users_tbl')
             ->join('user_role_tbl', 'users_tbl.id', '=', 'user_role_tbl.user_id')
             ->select('users_tbl.*', 'user_role_tbl.status',)
+            ->orderBy('id','desc')
             ->get();
         return view('admin.user.user_list',['users'=>$users]);
     }
@@ -168,7 +176,7 @@ class AdminController extends Controller
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $destinationPath = public_path().'/image/';
-            $filename= '../image/'.$file->getClientOriginalName();;
+            $filename= '/image/'.$file->getClientOriginalName();;
             $file->move($destinationPath, $filename);
             $user->avatar=$filename;
 
@@ -196,8 +204,16 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request ,$id)
     {
         //
+        Users::destroy($id);
+        Dayoff::where('user_id', $id)->delete();
+        Overtime::where('user_id', $id)->delete();
+        User_role::where('user_id', $id)->delete();
+        Salary::where('user_id', $id)->delete();
+
+        $request->session()->flash('status','Delete successful');
+        return redirect('user');
     }
 }

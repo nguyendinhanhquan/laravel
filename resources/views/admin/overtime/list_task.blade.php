@@ -40,6 +40,7 @@
 
 
                             <tr>
+                                <th>ID Task</th>
                                 <th>Fullname </th>
                                 <th>Day OT</th>
                                 <th>Start Time</th>
@@ -55,6 +56,7 @@
                             @foreach ($data as $item)
 
                                 <tr>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ $item->fullname }}</td>
                                     <td>{{ date_format(date_create($item->date_ot), 'd-m-Y') }}</td>
                                     <td>{{ date_format(date_create($item->start_time), 'H:i') }}</td>
@@ -79,7 +81,7 @@
                                         <a href="list-task/{{ $item->id }}" class="btn btn-primary bg-color" >
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <button  class="btn btn-primary bg-color" onclick="deleteJS({{ $item->id }})">
+                                        <button  class="btn btn-primary bg-color " onclick="deleteJS({{ $item->id }})">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -121,10 +123,6 @@
 
 @section('script')
 
-    <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- DataTables -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -141,8 +139,8 @@
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,
-                "searching": false,
-                
+                "searching": true,
+                "order": [[ 0, "desc" ]]
 
             });
             $('#example2').DataTable({
