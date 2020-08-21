@@ -17,7 +17,8 @@ use App\Users;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+    // return view('welcome');
 });
 
 Route::group(['middleware' => ['customAuth']], function () {
@@ -38,8 +39,10 @@ Route::group(['middleware' => ['customAuth']], function () {
     Route::post('user_edit/user_update', 'UserController@update');
 
     //User Overtime
-    Route::view('new-task', 'user.overtime.new_task');
-    Route::post('new_task', 'user\OvertimeController@store');
+    // Route::view('new-task', 'user.overtime.new_task');
+
+    // Route::post('new_task', 'user\OvertimeController@store');
+    Route::post('my-task/confirm_user/{id}', 'user\OvertimeController@update');
     Route::get('my-task', 'user\OvertimeController@index');
     Route::get('my-task/delete/{id}', 'user\OvertimeController@destroy');
     Route::get('my-task/{id}', 'user\OvertimeController@show');
@@ -77,6 +80,9 @@ Route::group(['middleware' => ['customAuth']], function () {
         Route::post('list-task/confirm', 'admin\OvertimeController@update');
         Route::get('total-overtime', 'admin\OvertimeController@total');
         Route::get('list-task/{id}', 'admin\OvertimeController@show');
+        Route::get('new-task-admin', 'admin\OvertimeController@newtask');
+        Route::post('new-task-admin', 'admin\OvertimeController@store');
+
 
         //Admin Dayoff
         Route::get('dayoff/{id}/yes', 'admin\DayoffController@approve');

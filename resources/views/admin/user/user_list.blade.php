@@ -32,6 +32,11 @@
 
                 <div class="card">
                     <div class="card-header">
+                        @if (Session::get('status'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('status') }}
+                            </div>
+                        @endif
                         <h3 class="card-title"><i class="fas fa-table"></i> Staff</h3>
 
                     </div>
@@ -53,7 +58,9 @@
                                 @foreach ($users as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->fullname }}</td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Detail info user" class="text-dark" href="user/{{ $item->id }}"><u>{{ $item->fullname }}</u></a>
+                                        </td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
                                         <td>{{ date_format(date_create($item->birthday), 'd-m-Y') }}</td>
@@ -67,24 +74,33 @@
                                         </td>
 
                                         <td class="option btn-custom">
-                                            <a href="user/active/{{ $item->id }}"
-                                                class="btn btn-primary bg-color mx-1 bg-success">
+                                            <a  href="user/active/{{ $item->id }}"
+                                                class="btn btn-primary bg-color mx-1 bg-success"
+                                                data-toggle="tooltip" data-placement="top" title="Active user"
+                                                >
                                                 <i class="fas fa-check"></i>
                                             </a>
                                             <a href="user/disable/{{ $item->id }}"
-                                                class="btn btn-primary bg-color mx-1 bg-danger">
+                                                class="btn btn-primary bg-color mx-1 bg-danger"
+                                                data-toggle="tooltip" data-placement="top" title="Disable user"
+                                                >
                                                 <i class="fas fa-times"></i>
                                             </a>
 
 
-                                            <a href="user/{{ $item->id }}" class="btn btn-primary bg-color">
-                                                <i class="fas fa-info-circle"></i>
-                                            </a>
-
-                                            <button class="btn btn-primary bg-color m-1"
-                                                onclick="deleteJS({{ $item->id }})">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            @if ($item->status !== 1)
+                                                <button class="btn btn-primary bg-color " onclick="deleteJS({{ $item->id }})" 
+                                                    data-toggle="tooltip" data-placement="top" title="Delete user"
+                                                    >
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            @else
+                                                <button class="btn btn-primary bg-color " disabled
+                                                data-toggle="tooltip" data-placement="top" title="Delete user"
+                                                >
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -105,22 +121,22 @@
 
     <!-- Modal HTML -->
     <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-confirm">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h4 class="modal-title w-100">Are you sure?</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">
-                  <p>Do you really want to delete these records?</p>
-              </div>
-              <div class="modal-footer justify-content-center">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-danger" id="delete">Delete</button>
-              </div>
-          </div>
-      </div>
-  </div>
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
@@ -183,6 +199,7 @@
             })
 
         }
+
     </script>
 
 @endsection

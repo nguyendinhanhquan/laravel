@@ -7,8 +7,9 @@
     <title>AdminLTE 3 | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="css/mycss.css">
+
+    <!-- My Css -->
+    <link rel="stylesheet" href="{{ asset('css/mycss.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -24,48 +25,55 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="/"><b>Welcome  {{ Session::get('username')}}</b></a>
+            <a href="/"><b>Welcome {{ Session::get('username') }}</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in</p>
-                @if(Session::get('status'))
+                @if (Session::get('status'))
                     <div class="alert alert-danger" role="alert">
-                        {{Session::get('status')}}
+                        {{ Session::get('status') }}
                     </div>
                 @endif
                 <form action="login" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username" required>
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="mw-icon fas fa-user"></span>
                             </div>
                         </div>
+                        <input type="text" class="form-control border-right" placeholder="Username" name="username"
+                            required>
+
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password" required>
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span toggle="#password-field" class="mw-icon fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                         </div>
+                        <input type="password" id="password-field" class="form-control border-right password" placeholder="Password"
+                            name="password" required>
+                        
+
+
+                        
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
                                     Remember me
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- /.col -->
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block bg-color" name="login" value="Login">Sign
-                                In</button>
+                            <button type="submit" class="btn btn-primary btn-block bg-color" name="login"
+                                value="Login">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -91,6 +99,11 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+
+    <!-- JQuery Validator -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <!-- My Script JS -->
+    <script src={{ asset('js/myjs.js') }}></script>
 
 </body>
 

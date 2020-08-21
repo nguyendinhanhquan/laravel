@@ -44,9 +44,11 @@ class LoginController extends Controller
             {
                 //------------------- Users_tbl ------------------
                 $request->validate([
+                    'email' => 'email:rfc,dns',
                     'username' => 'required',
-                    'password' => 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/',
+                    'password' => 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%#*?&]{7,}$/',
                 ], [
+                    'email.email' => 'Please enter a valid email address.',
                     'username.required' => 'Name is required',
                     'password.regex' => 'Password minimum 7 character, at least one uppercase letter, one number and one special character',
                     
@@ -58,13 +60,7 @@ class LoginController extends Controller
 
                 $filename = '/image/macdinh.jpg';
                 $user->avatar = $filename;
-                $user->phone = 'unknow';
-                $user->address = 'unknow';
-                $user->identity_card = 'unknow';
-                $user->issue_place = 'unknow';
-                $user->university = 'unknow';
-                $user->year_of_graduate = 'unknow';
-                $user->note = 'unknow';
+                
             
                 $user->save();
 
@@ -84,6 +80,7 @@ class LoginController extends Controller
                 $salary = new Salary;
                 $salary->user_id = $user[0]->id;
                 $salary->save();
+                
                 
                 return redirect('login');
             }
@@ -133,7 +130,6 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        
         $userLogin = User_Login::latest()->orderBy('id', 'DESC')->first();
         $logout_time = Carbon::now()->toDateTimeString();
         $userLogin->logout_time = $logout_time;

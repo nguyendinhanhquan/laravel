@@ -36,114 +36,339 @@
                     @foreach ($data as $item)
 
                         <div class="card-body ">
-                            <strong><i class="fas fa-check-circle"></i> Status</strong>
+                            @if ($item->status != null && $item->status != 3)
+                                <strong><i class="fas fa-check-circle"></i> Status</strong>
 
-                            @if ($item->status === 1)
-                                <b><p class="text-success"> Approve</p></b>
-                            @elseif ($item->status === 0 )
-                                <b><p class="text-danger">Reject</p></b>
-                            @else
-                                <b><p class="text-info">Wating ...</p></b>
+                                @if ($item->status === 1)
+                                    <b>
+                                        <p class="text-success"> Approve</p>
+                                    </b>
+                                @elseif ($item->status === 0 )
+                                    <b>
+                                        <p class="text-danger">Reject</p>
+                                    </b>
+                                @endif
+                                <hr>
+
+                                <strong><i class="fas fa-comment-dots"></i> Feedback from Admin <b
+                                        class="text-danger">*</b></strong>
+
+                                <p class="text-muted">
+                                    {{ $item->feedback }}
+                                </p>
+
+                                <hr>
+
                             @endif
 
-                            <hr>
-
-                            <strong><i class="fas fa-comment-dots"></i> Feedback from Admin <b class="text-danger">*</b></strong>
-
-                            <p class="text-muted">
-                                {{ $item->feedback }}
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-calendar-alt"></i> Date OT</strong>
-
-                            <p class="text-muted">
-                                {{ date_format(date_create($item->data_ot), 'd-m-Y') }}
-
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-clock"></i> Start Time </strong>
-
-                            <p class="text-muted">
-                                {{ date_format(date_create($item->start_time), 'H:i') }}
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-clock"></i> End Time </strong>
-
-                            <p class="text-muted">
-                                {{ date_format(date_create($item->end_time), 'H:i') }}
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-stopwatch"></i> Total Time</strong>
-
-                            <p class="text-muted">
-                                {{ $item->total_time }} Minutes
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-map-marker-alt"></i> Place OT</strong>
-
-                            <p class="text-muted">
-                                {{ $item->place_ot }}
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-tasks"></i> Task Name</strong>
-
-                            <p class="text-muted">
-                                {{ $item->task_name }}
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fas fa-clipboard"></i> Note</strong>
-
-                            <p class="text-muted">
-                                {{ $item->note }}
-                            </p>
-
-                            <hr>
-
-                            
+                            <div>
 
 
 
-                            {{-- <strong><i class="fas fa-check-double"></i> Action</strong>
 
-                            <div class="option d-flex my-2 justify-content-around">
-                                <a href="{{ $item->id }}/yes" class="btn btn-primary bg-success border-0  w-25">
-                                    <i class="fas fa-check"></i>
-                                </a>
-                                <a href="{{ $item->id }}/no" class="btn btn-primary bg-danger border-0  w-25">
-                                    <i class="fas fa-times"></i>
-                                </a>
+                                <strong><i class="fas fa-map-marker-alt"></i> Place OT</strong>
+
+                                <p class="text-muted">
+                                    {{ $item->place_ot }}
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-tasks"></i> Task Name</strong>
+
+                                <p class="text-muted">
+                                    {{ $item->task_name }}
+                                </p>
+
+                                <hr>
+
+                                @if ($item->total_time != 0)
+
+                                    <strong><i class="fas fa-calendar-alt"></i> Date OT</strong>
+
+                                    <p class="text-muted">
+                                        {{ date_format(date_create($item->data_ot), 'd-m-Y') }}
+
+                                    </p>
+
+                                    <hr>
+
+
+                                    <strong><i class="fas fa-clock"></i> Start Time </strong>
+
+                                    <p class="text-muted">
+                                        {{ date_format(date_create($item->start_time), 'H:i') }}
+                                    </p>
+
+
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-clock"></i> End Time </strong>
+
+
+                                    <p class="text-muted">
+                                        {{ date_format(date_create($item->end_time), 'H:i') }}
+                                    </p>
+
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-stopwatch"></i> Total Time</strong>
+
+                                    <p class="text-muted">
+                                        {{ $item->total_time }} Minutes
+                                    </p>
+
+                                    <hr>
+
+                                    <strong><i class="fas fa-clipboard"></i> Note</strong>
+
+                                    <p class="text-muted">
+                                        {{ $item->note }}
+                                    </p>
+
+                                    <hr>
                             </div>
-                            <hr> --}}
-                        </div>  
-                        
-                        
-                    @endforeach
+                    @endif
 
                 </div>
 
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
 
+
+
+
+
+
+                @if ( $item->status == 3)
+                <div class="card-header bg-color">
+                    <h3 class="card-title ">Staff confirm edit</h3>
+                </div>
+                <div class="card-body">
+
+                    <form id="overtime" action="confirm_user/{{ $item->id }}" method="post" id="admin_overtime_form">
+                        @csrf
+
+                        <!-- Date -->
+                        <div class="form-group">
+                            <label>Day Overtime:</label>
+                            <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                <div class="input-group-append" data-target="#reservationdate1"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <input  readonly type="text" onblur="checkDateOT()" class="form-control datetimepicker-input"
+                                    data-target="#reservationdate1" name="date_ot" required id="day_overtime" />
+                                <label class="error" id="checkValueDate" for="date_ot"></label>
+                            </div>
+                        </div>
+
+                        @if (Session::get('status'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('status') }}
+                            </div>
+                        @endif
+
+                        <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>Start Time:</label>
+
+                                        <div class="input-group date" id="timepicker1" data-target-input="nearest">
+                                            <div class="input-group-append" data-target="#timepicker1"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            </div>
+                                            <input readonly onblur="checkStartTime()" type="text"
+                                                class="form-control datetimepicker-input" data-target="#timepicker1"
+                                                name="start_time" required id="start_time" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            @if (Session::get('status'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+                        </div>
+
+
+
+                        <div class="form-group clearfix">
+                            <div class="icheck-danger d-inline">
+
+
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>End Time:</label>
+
+                                        <div class="input-group date" id="timepicker2" data-target-input="nearest">
+                                            <div class="input-group-append" data-target="#timepicker2"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            </div>
+                                            <input readonly type="text"
+                                                class="form-control datetimepicker-input" data-target="#timepicker2"
+                                                name="end_time" required id="end_time" disabled />
+                                            <label class="error" id="endTime_error" for="end_time"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            @if (Session::get('status'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="note">Note</label>
+
+                            <textarea class="form-control" name="note" id="note" cols="100" rows="3"></textarea>
+                        </div>
+
+
+                        <div class=" text-center">
+                            <button type="submit" class="btn btn-primary bg-color w-50 ">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+                @endif
+
+            </div>
+
+            @if ($item->status == null )
+                <div class="card-header bg-color">
+                    <h3 class="card-title ">Staff confirm </h3>
+                </div>
+                <div class="card-body">
+
+                    <form id="overtime" action="confirm_user/{{ $item->id }}" method="post" id="admin_overtime_form">
+                        @csrf
+
+                        <!-- Date -->
+                        <div class="form-group">
+                            <label>Day Overtime:</label>
+                            <div class="input-group date" id="reservationdate1" data-target-input="nearest">
+                                <div class="input-group-append" data-target="#reservationdate1"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <input readonly type="text"  class="form-control datetimepicker-input"
+                                    data-target="#reservationdate1" name="date_ot" required id="day_overtime" />
+                                <label class="error" id="checkValueDate" for="date_ot"></label>
+                            </div>
+                        </div>
+
+                        @if (Session::get('status'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('status') }}
+                            </div>
+                        @endif
+
+                        <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>Start Time:</label>
+
+                                        <div class="input-group date" id="timepicker1" data-target-input="nearest">
+                                            <div class="input-group-append" data-target="#timepicker1"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            </div>
+                                            <input readonly onblur="checkStartTime()" type="text"
+                                                class="form-control datetimepicker-input" data-target="#timepicker1"
+                                                name="start_time" required id="start_time" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            @if (Session::get('status'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+                        </div>
+
+
+
+                        <div class="form-group clearfix">
+                            <div class="icheck-danger d-inline">
+
+
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>End Time:</label>
+
+                                        <div class="input-group date" id="timepicker2" data-target-input="nearest">
+                                            <div class="input-group-append" data-target="#timepicker2"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            </div>
+                                            <input readonly type="text"
+                                                class="form-control datetimepicker-input" data-target="#timepicker2"
+                                                name="end_time" required id="end_time" disabled />
+                                            <label class="error" id="endTime_error" for="end_time"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            @if (Session::get('status'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="note">Note</label>
+
+                            <textarea class="form-control" name="note" id="note" cols="100" rows="3"></textarea>
+                        </div>
+
+
+                        <div class=" text-center">
+                            <button type="submit" class="btn btn-primary bg-color w-50 ">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+                @endif
+            
+
+            @endforeach
 
         </div>
+        <!-- /.card -->
+
+
+    </div>
     </div>
 
-    
+
 
 
 @endsection
@@ -158,5 +383,41 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+
+@endsection
+
+
+@section('script')
+    <script type="text/javascript">
+        var now = Date.now();
+        $(function() {
+            
+            $('#reservationdate1').datetimepicker({
+                format: "DD-MM-YYYY",
+                minDate: now,
+                ignoreReadonly: true,
+            })
+
+            $('#reservationdate2').datetimepicker({
+                format: "DD-MM-YYYY",
+                ignoreReadonly: true,
+            })
+
+            //Timepicker
+            $('#timepicker1').datetimepicker({
+                format: 'HH:mm',
+                ignoreReadonly: true,
+            })
+
+            //Timepicker
+            $('#timepicker2').datetimepicker({
+                format: 'HH:mm',
+                ignoreReadonly: true,
+            })
+        });
+
+    </script>
+
+
 
 @endsection

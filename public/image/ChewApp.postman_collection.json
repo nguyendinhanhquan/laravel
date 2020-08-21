@@ -1,0 +1,5257 @@
+{
+	"info": {
+		"_postman_id": "ad6f2c1e-cd55-498c-b7cc-1e97200b0e1b",
+		"name": "ChewApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "User Login",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "test@gmail.com"
+										},
+										{
+											"key": "pass",
+											"value": "a12345678"
+										},
+										{
+											"key": "type_device",
+											"value": "postman"
+										},
+										{
+											"key": "token_device",
+											"value": "UUID",
+											"type": "text",
+											"disabled": true
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/APIv2Account/UserLogin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"UserLogin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "fullname",
+											"value": "Minh Chiến",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test@gmail.com"
+										},
+										{
+											"key": "pass",
+											"value": "a12345678"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "referral",
+											"value": "O3S390PY6TH",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type_device",
+											"value": "postman",
+											"type": "text"
+										},
+										{
+											"key": "token_device",
+											"value": "notTokenDevice ",
+											"disabled": true
+										},
+										{
+											"key": "subscribe",
+											"value": "NO",
+											"type": "text"
+										},
+										{
+											"key": "uuid_device",
+											"value": "123123123",
+											"type": "text",
+											"disabled": true
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/APIv2Account/UserRegistry",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"UserRegistry"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SendSMSVerification",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "f774d250-501e-4de5-bd7b-4a78e5bbce6c"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "phone",
+											"value": "09123123123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Account/SendSMS",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"SendSMS"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "thanhdien19@gmail.com",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "0921094248",
+											"disabled": true
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verification Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "f774d250-501e-4de5-bd7b-4a78e5bbce6c"
+										},
+										{
+											"key": "code",
+											"value": "515863",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Account/CheckedDigitCode",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"CheckedDigitCode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token_device",
+											"value": "Minh Chien"
+										},
+										{
+											"key": "fullname",
+											"value": "Minh Chien"
+										},
+										{
+											"key": "email",
+											"value": "chienservermail@gmail.com"
+										},
+										{
+											"key": "type_device",
+											"value": "IOS"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"disabled": true
+										},
+										{
+											"key": "google_id",
+											"value": "minhchien"
+										},
+										{
+											"key": "avatar_url",
+											"value": "default.png",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/APIv2Account/google",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"google"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login apple",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"type": "text",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "tokenDevice",
+											"value": "Minh Chien"
+										},
+										{
+											"key": "fullname",
+											"value": "Minh Chien"
+										},
+										{
+											"key": "email",
+											"value": "chienservermail2@gmail.com"
+										},
+										{
+											"key": "typeDevice",
+											"value": "IOS"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "appleId",
+											"value": "minhchien22123"
+										},
+										{
+											"key": "avatar_url",
+											"value": "default.png",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Account/LoginWithAppleID",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"LoginWithAppleID"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Facebook",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token_device",
+											"value": "TOKENDEVICE"
+										},
+										{
+											"key": "fullname",
+											"value": "Developer"
+										},
+										{
+											"key": "email",
+											"value": "duytien1395@gmail.com"
+										},
+										{
+											"key": "type_device",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "facebook_id",
+											"value": "51b5b6505a5d7a796fbe62a7924fa3368cf6f7b"
+										},
+										{
+											"key": "avatar_url",
+											"value": "asfbbbbb",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/APIv2Account/Facebook",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"Facebook"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "4eacb5c2-5967-448d-a395-6f388a49c3ad",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/APIv2Account/Logout",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"APIv2Account",
+										"Logout"
+									]
+								},
+								"description": "đ"
+							},
+							"response": []
+						},
+						{
+							"name": "GetProfile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "c97dd88e-1d19-486a-a308-937642aa5639",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/APIv2Account/GetProfile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"GetProfile"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "6ee66900-5aea-4aff-9bb9-7aa7e8037fe1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "chienservermail@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Account/ForgotPassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"ForgotPassword"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Changed Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "a1a72163-7e5f-482c-8fca-0332b33d37f6",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "oldPassword",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "a12341234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Account/ChangePassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"ChangePassword"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MuteNotify",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "a1a72163-7e5f-482c-8fca-0332b33d37f6",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "isBlock",
+											"value": "yes",
+											"description": "yes||no",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.47:8900/api/APIv2Account/UpdateBlockNotification",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"47"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"APIv2Account",
+										"UpdateBlockNotification"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Max Distance",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "a1a72163-7e5f-482c-8fca-0332b33d37f6",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "maxDistance",
+											"value": "13.5",
+											"description": "yes||no",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.47:8900/api/APIv2Account/UpdateMaxDistance",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"47"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"APIv2Account",
+										"UpdateMaxDistance"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Referral Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "a1fb73ef-4791-4038-a4ed-a8bb08432e4d",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "referralCode",
+											"value": "2RVLZ6M27M6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIV2Account/UpdateReferralCode",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIV2Account",
+										"UpdateReferralCode"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Home",
+					"item": [
+						{
+							"name": "GetBanner",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIBanner/GetBannerPublish",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIBanner",
+										"GetBannerPublish"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOfferFoodHome",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "20.9740414",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "105.0921684",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Product/ProductOfferHome",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Product",
+										"ProductOfferHome"
+									]
+								},
+								"description": "GetOfferFoodHome"
+							},
+							"response": []
+						},
+						{
+							"name": "GetRequestFoodHome",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "20.9740415",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "105.09105",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Product/ProductRequestHome",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Product",
+										"ProductRequestHome"
+									]
+								},
+								"description": "GetRequestFoodHome"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Get All Services",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://staging.chewapp.co/api/v2/category/getServices/Offer",
+									"protocol": "http",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"category",
+										"getServices",
+										"Offer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Food Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://192.168.10.47:8900/api/v2/category/Requsest/15",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"47"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"v2",
+										"category",
+										"Requsest",
+										"15"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "MyPost + Middle",
+					"item": [
+						{
+							"name": "UploadImageNewPost",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file_name",
+											"type": "file",
+											"src": "/C:/Users/phamv/OneDrive/Desktop/Image/123.jpg"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "17mHi7Eg3E2leSZe0rQj4w==",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "uploadedType",
+											"value": "foods",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Food/UploadImage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Food",
+										"UploadImage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetListCategoryImage",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "9ffec5c1-f041-430e-956b-fd5f13178a72",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "Request_food_delivery_meal",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Food/GetListCategoryImage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Food",
+										"GetListCategoryImage"
+									]
+								},
+								"description": "GetListCategoryImage"
+							},
+							"response": []
+						},
+						{
+							"name": "NewProduct",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38c6ba16-9e88-4841-b52f-b57ccf5273d1",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "serviceId",
+											"value": "15",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "serviceType",
+											"value": "FoodDeliveryQuick",
+											"type": "text"
+										},
+										{
+											"key": "chewtype",
+											"value": "Request",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "Request_food_delivery_meal",
+											"type": "text"
+										},
+										{
+											"key": "foodCategory",
+											"value": "Dessert",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "foodName",
+											"value": "Meal",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "foodDescription",
+											"value": "Món ăn việt nam",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLocationName",
+											"value": "Ha Noi",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLatitude",
+											"value": "10.8167742",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLongitude",
+											"value": "106.6068855",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "toLocationName",
+											"value": "HCM",
+											"type": "text"
+										},
+										{
+											"key": "toLocationDetail",
+											"value": "985A",
+											"type": "text"
+										},
+										{
+											"key": "toLocationRemark",
+											"value": "Remark",
+											"type": "text"
+										},
+										{
+											"key": "toLatitude",
+											"value": "10.813488231357",
+											"type": "text"
+										},
+										{
+											"key": "toLongitude",
+											"value": "106.60720714296",
+											"type": "text"
+										},
+										{
+											"key": "userToken",
+											"value": "298bd22f-93b0-4173-a203-3d6cf6ee097c",
+											"type": "text"
+										},
+										{
+											"key": "payment",
+											"value": "ChewPay",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "acceptNear",
+											"value": "0",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "foodImage",
+											"type": "file",
+											"src": "/C:/Users/phamv/OneDrive/Desktop/Image/banhmi.jpeg"
+										},
+										{
+											"key": "stockImage",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "budgetAndFee",
+											"value": "1,000.00",
+											"type": "text"
+										},
+										{
+											"key": "foodImage",
+											"type": "file",
+											"src": "/C:/Users/phamv/OneDrive/Desktop/Image/77402513_870371310044406_7267185356045287424_n.jpg"
+										}
+									],
+									"options": {
+										"formdata": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/product/PostProduct",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"PostProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "NewProduct Version2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "93b31f66-292a-4143-86c4-959232df6e92",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "serviceType",
+											"value": "FoodDeliveryQuick",
+											"type": "text"
+										},
+										{
+											"key": "chewType",
+											"value": "Request",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "Request_food_delivery_meal",
+											"type": "text"
+										},
+										{
+											"key": "productName",
+											"value": "Meal",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "productDescription",
+											"value": "Món ăn việt nam",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLocationName",
+											"value": "Ha Noi",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLatitude",
+											"value": "10.8167742",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLongitude",
+											"value": "106.6068855",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "toLocationName",
+											"value": "HCM",
+											"type": "text"
+										},
+										{
+											"key": "toLocationDetail",
+											"value": "985A",
+											"type": "text"
+										},
+										{
+											"key": "toLatitude",
+											"value": "10.813488231357",
+											"type": "text"
+										},
+										{
+											"key": "toLongitude",
+											"value": "106.60720714296",
+											"type": "text"
+										},
+										{
+											"key": "userToken",
+											"value": "86f6e383-bab9-499f-bdb7-97bc6714b929",
+											"type": "text"
+										},
+										{
+											"key": "payment",
+											"value": "ChewPay",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "budgetAndFee",
+											"value": "1,000.00",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "ádfsaf",
+											"type": "text"
+										}
+									],
+									"options": {
+										"formdata": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/product/PostProductV2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"PostProductV2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetListTimeValidPost",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "55014f05-46b9-49e9-be11-57da399bb594",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "foodImage",
+											"type": "file",
+											"src": "/C:/Users/phamv/OneDrive/Desktop/Image/123.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/SettingRequestTiming/GetSettingPostValidTime",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"SettingRequestTiming",
+										"GetSettingPostValidTime"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "serviceId",
+											"value": "15",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "serviceType",
+											"value": "FoodDeliveryQuick",
+											"type": "text"
+										},
+										{
+											"key": "chewtype",
+											"value": "Request",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "request_food_delivery_meal",
+											"type": "text"
+										},
+										{
+											"key": "foodName",
+											"value": "Sửa 5",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "foodDescription",
+											"value": "Món ăn việt nam",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLocationName",
+											"value": "0.0",
+											"type": "text"
+										},
+										{
+											"key": "fromLatitude",
+											"value": "0.0",
+											"type": "text"
+										},
+										{
+											"key": "fromLongitude",
+											"value": "0.0",
+											"type": "text"
+										},
+										{
+											"key": "toLocationName",
+											"value": "HCM",
+											"type": "text"
+										},
+										{
+											"key": "toLocationDetail",
+											"value": "985A",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "toLocationRemark",
+											"value": "Remark",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "toLatitude",
+											"value": "10.8463166",
+											"type": "text"
+										},
+										{
+											"key": "toLongitude",
+											"value": "106.6329028",
+											"type": "text"
+										},
+										{
+											"key": "userToken",
+											"value": "6e203fa1-7f85-4801-9c96-c253877ba7cb",
+											"type": "text"
+										},
+										{
+											"key": "payment",
+											"value": "COD",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "80",
+											"type": "text"
+										},
+										{
+											"key": "acceptNear",
+											"value": "0",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "foodImage",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "productID",
+											"value": "1356",
+											"type": "text"
+										},
+										{
+											"key": "budgetAndFee",
+											"value": "250",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/product/updateProduct",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"updateProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product Version 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "serviceType",
+											"value": "FoodDeliveryQuick",
+											"type": "text"
+										},
+										{
+											"key": "chewType",
+											"value": "Request",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "Request_food_delivery_meal",
+											"type": "text"
+										},
+										{
+											"key": "productName",
+											"value": "Meal",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "productDescription",
+											"value": "Món ăn việt nam",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLocationName",
+											"value": "Ha Noi",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLatitude",
+											"value": "10.8167742",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fromLongitude",
+											"value": "106.6068855",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "toLocationName",
+											"value": "HCM",
+											"type": "text"
+										},
+										{
+											"key": "toLocationDetail",
+											"value": "985A",
+											"type": "text"
+										},
+										{
+											"key": "toLocationRemark",
+											"value": "Remark",
+											"type": "text"
+										},
+										{
+											"key": "toLatitude",
+											"value": "10.813488231357",
+											"type": "text"
+										},
+										{
+											"key": "toLongitude",
+											"value": "106.60720714296",
+											"type": "text"
+										},
+										{
+											"key": "userToken",
+											"value": "86f6e383-bab9-499f-bdb7-97bc6714b929",
+											"type": "text"
+										},
+										{
+											"key": "payment",
+											"value": "ChewPay",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "budgetAndFee",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "productId",
+											"value": "1563",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "ádfasf",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/product/updateProductV2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"updateProductV2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Push Notify For New Post",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"url": {
+									"raw": "localhost:51992/api/v2/product/PushNotifyForNewPost/650446",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"PushNotifyForNewPost",
+										"650446"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "c75e2bb5-4044-4340-bcc8-28ef329e18ec",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/v2/product/deleteProduct/640440",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"deleteProduct",
+										"640440"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "expired product",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "c75e2bb5-4044-4340-bcc8-28ef329e18ec",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/v2/product/expireProduct/640440",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"expireProduct",
+										"640440"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RemoveImage",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "17mHi7Eg3E2leSZe0rQj4w==",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "http://192.168.10.150:8000/UploadedImage/Foods/100-11-2019-115158062.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/APIv2Food/RemoveImage",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"APIv2Food",
+										"RemoveImage"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Inbox",
+					"item": [
+						{
+							"name": "Chat",
+							"item": [
+								{
+									"name": "Offer Amount",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4",
+													"type": "text"
+												},
+												{
+													"key": "token",
+													"value": "c5bc3962-8b29-40d5-a5cf-48c77b62bc96",
+													"type": "text"
+												},
+												{
+													"key": "connectID",
+													"value": "1905",
+													"type": "text"
+												},
+												{
+													"key": "amount",
+													"value": "100",
+													"type": "text"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/APIv2Connections/SCofferKC",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"APIv2Connections",
+												"SCofferKC"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Accept Offer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "8e85e4a4-287b-4556-868b-43b5b05af43f"
+												},
+												{
+													"key": "connectID",
+													"value": "3201"
+												},
+												{
+													"key": "paymentMethodID",
+													"value": "168",
+													"type": "text"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "localhost:51992/api/APIv2Connections/KCAcceptSC",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"KCAcceptSC"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reject offer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "token",
+													"value": "cdff4a1a-d053-475d-8c3e-dde851711449",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "connectID",
+													"value": "253321",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:51992/api/APIv2Connections/KCRejectedSC",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"KCRejectedSC"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Have Promocode",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "338e6514-bbca-41d1-8f62-1141f2ad19b1"
+												},
+												{
+													"key": "connectID",
+													"value": "3305"
+												},
+												{
+													"key": "code",
+													"value": "aaa\" || x.ID == 10 || x.Amount == \"aaa"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://192.168.10.150:8000/api/APIv2Connections/UpdatePromocode",
+											"protocol": "http",
+											"host": [
+												"192",
+												"168",
+												"10",
+												"150"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"UpdatePromocode"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Have Promocode Copy",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "3e90a0a4-809f-476d-bf45-7c4056f52e63"
+												},
+												{
+													"key": "connectID",
+													"value": "3352"
+												},
+												{
+													"key": "code",
+													"value": "wecare"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "localhost:51992/api/APIv2Connections/UpdatePromocode_v2_1",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"UpdatePromocode_v2_1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Promocode",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "8e85e4a4-287b-4556-868b-43b5b05af43f"
+												},
+												{
+													"key": "connectID",
+													"value": "3201"
+												},
+												{
+													"key": "code",
+													"value": "CHEWAPP111",
+													"disabled": true
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "localhost:51992/api/APIv2Connections/RemovePromocode_v2_1",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"RemovePromocode_v2_1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PaymentDetails",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "c5bc3962-8b29-40d5-a5cf-48c77b62bc96"
+												},
+												{
+													"key": "connectID",
+													"value": "1903"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/APIv2Connections/PaymentDetails_v2_1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"APIv2Connections",
+												"PaymentDetails_v2_1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PaymentDetails Copy",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "3e90a0a4-809f-476d-bf45-7c4056f52e63"
+												},
+												{
+													"key": "connectID",
+													"value": "3352"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "localhost:51992/api/APIv2Connections/PaymentDetails_v2_1",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"PaymentDetails_v2_1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Deiveried Food",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "c5bc3962-8b29-40d5-a5cf-48c77b62bc96"
+												},
+												{
+													"key": "connectID",
+													"value": "1904"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/APIv2Connections/DeliveredFood",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"APIv2Connections",
+												"DeliveredFood"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Decline",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "73ce9701-9b82-421d-92c2-9a5ce8b0e72c"
+												},
+												{
+													"key": "connectID",
+													"value": "13308"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:51992/api/APIv2Connections/BlockConnect",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"BlockConnect"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Send Message",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "sig",
+												"value": "7a09a9bd360602e719e0b71e3eae55b4",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "token",
+												"value": "03e7ab86-22a4-45c3-ae6d-af59a4ce19fb",
+												"equals": true,
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4"
+												},
+												{
+													"key": "token",
+													"value": "8e85e4a4-287b-4556-868b-43b5b05af43f"
+												},
+												{
+													"key": "connectID",
+													"value": "3201"
+												},
+												{
+													"key": "type",
+													"value": "text",
+													"type": "text"
+												},
+												{
+													"key": "message",
+													"value": "spam nè",
+													"type": "text"
+												},
+												{
+													"key": "localID",
+													"value": "1591429443.123",
+													"type": "text"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:51992/api/APIv2Connections/SendChat",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"APIv2Connections",
+												"SendChat"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Rating",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "sig",
+												"value": "7a09a9bd360602e719e0b71e3eae55b4",
+												"type": "text"
+											},
+											{
+												"key": "token",
+												"value": "edfb72e7-982e-48bb-b008-ae8803cfef93",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "token",
+													"value": "abcs",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "sig",
+													"value": "7a09a9bd360602e719e0b71e3eae55b4",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "star",
+													"value": "12",
+													"type": "text"
+												},
+												{
+													"key": "feedBack",
+													"value": "Ngu",
+													"type": "text"
+												},
+												{
+													"key": "connectID",
+													"value": "133314",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://192.168.10.150:8000/api/rating/PostRate",
+											"protocol": "http",
+											"host": [
+												"192",
+												"168",
+												"10",
+												"150"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"rating",
+												"PostRate"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Rated",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "sig",
+												"value": "7a09a9bd360602e719e0b71e3eae55b4",
+												"type": "text"
+											},
+											{
+												"key": "token",
+												"value": "f9cf569c-c375-4c08-8b84-1a2a418b65a6",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "connectID",
+													"value": "163318",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://192.168.10.150:8000/api/rating/CheckConnectRated",
+											"protocol": "http",
+											"host": [
+												"192",
+												"168",
+												"10",
+												"150"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"rating",
+												"CheckConnectRated"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "All connect of food",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "token",
+											"value": "f25a2222-6581-4d79-bb66-a767ab766010"
+										},
+										{
+											"key": "foodID",
+											"value": "10133",
+											"disabled": true
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Connections/ListConnectByFood",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Connections",
+										"ListConnectByFood"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Created Connection",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "c5bc3962-8b29-40d5-a5cf-48c77b62bc96",
+											"type": "text"
+										},
+										{
+											"key": "productID",
+											"value": "1683",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/APIv2Connections/Create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"APIv2Connections",
+										"Create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Connect Details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "f25a2222-6581-4d79-bb66-a767ab766010",
+											"type": "text"
+										},
+										{
+											"key": "connectID",
+											"value": "3187",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/APIv2Connections/Details",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"APIv2Connections",
+										"Details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AllConnect",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "8e85e4a4-287b-4556-868b-43b5b05af43f",
+											"type": "text"
+										},
+										{
+											"key": "filter",
+											"value": "youroffers",
+											"description": "\"yourOffers\" | \"yourRequests\" | \"communityOffers\" | \"communityRequests\" | \"archived\"",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/APIv2Connections/ListConnect",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"APIv2Connections",
+										"ListConnect"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Archive",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "connectID",
+											"value": "43309",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "c8a63936-fe22-4942-86d9-4fc6b6ae8025",
+											"type": "text"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "filter",
+											"value": "yourOffers",
+											"description": "\"yourOffers\" | \"yourRequests\" | \"communityOffers\" | \"communityRequests\"",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Connections/Archive",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Connections",
+										"Archive"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "connectID",
+											"value": "213315",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "90e98fb6-351f-4291-acc6-aadde1238ae7",
+											"type": "text"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "filter",
+											"value": "yourOffers",
+											"description": "\"yourOffers\" | \"yourRequests\" | \"communityOffers\" | \"communityRequests\"",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Connections/Remove",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Connections",
+										"Remove"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UnArchive",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "03e7ab86-22a4-45c3-ae6d-af59a4ce19fb",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "connectID",
+											"value": "253321",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "cdff4a1a-d053-475d-8c3e-dde851711449",
+											"type": "text"
+										},
+										{
+											"key": "filter",
+											"value": "archived",
+											"type": "text"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Connections/UnArchive",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Connections",
+										"UnArchive"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateLastMessage",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"type": "text",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4"
+									},
+									{
+										"key": "token",
+										"type": "text",
+										"value": "ca7bca6b-2035-4eb9-a63e-c3f1f4700de1"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "connectID",
+											"value": "213315",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "ca7bca6b-2035-4eb9-a63e-c3f1f4700de1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Connections/UpdateLastMessage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Connections",
+										"UpdateLastMessage"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "chientest@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Account/ForgotPassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Account",
+										"ForgotPassword"
+									]
+								},
+								"description": "ForgotPassword"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userToken",
+											"value": "d2056baf-6db9-4853-b7b4-cad66e1d20da",
+											"type": "text"
+										},
+										{
+											"key": "userFullName",
+											"value": "Test Full Name",
+											"type": "text"
+										},
+										{
+											"key": "userEmail",
+											"value": "phamvanminhchiena2@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "userPhone",
+											"value": "65 98296203",
+											"type": "text"
+										},
+										{
+											"key": "Image",
+											"value": "http://localhost:51992/UploadedImage/User/16-12-2019-144117603.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/Account/PostAccount",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"Account",
+										"PostAccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ContentReferral",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "3db2bf8d-c888-4be1-a6e9-02777ad7188a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/v2/Referral/GetContentReferral",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"Referral",
+										"GetContentReferral"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateTokenDevice",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "9daddcae-eee7-476f-9a78-ef650d50bc9c",
+											"type": "text"
+										},
+										{
+											"key": "tokenDevice",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8000/api/v2/Account/UpdateTokenDevices",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v2",
+										"Account",
+										"UpdateTokenDevices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCurrentLocation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "9daddcae-eee7-476f-9a78-ef650d50bc9c",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.47:8000/api/v2/Account/UpdateCurrentLocation",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"47"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v2",
+										"Account",
+										"UpdateCurrentLocation"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Location",
+					"item": [
+						{
+							"name": "GetListAddressByID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Address/GetListAddressByID",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Address",
+										"GetListAddressByID"
+									]
+								},
+								"description": "GetListAddressByID"
+							},
+							"response": []
+						},
+						{
+							"name": "SaveAddress",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "home",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "hn",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "10.11111",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "105.111111",
+											"type": "text"
+										},
+										{
+											"key": "details",
+											"value": "ABC",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "remarks",
+											"value": "XYZ",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "Others",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Address/SaveAddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Address",
+										"SaveAddress"
+									]
+								},
+								"description": "SaveAddress"
+							},
+							"response": []
+						},
+						{
+							"name": "Remove",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "160027",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Address/Remove",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Address",
+										"Remove"
+									]
+								},
+								"description": "Remove"
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateAddress",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "160027",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Nha Tu",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "HCM",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "10.111",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "105.1",
+											"type": "text"
+										},
+										{
+											"key": "details",
+											"value": "Bao an, bao o",
+											"type": "text"
+										},
+										{
+											"key": "remarks",
+											"value": "aaaaaaaaaaaa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/APIv2Address/UpdateAddress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Address",
+										"UpdateAddress"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Notification",
+					"item": [
+						{
+							"name": "Get Notification",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "a0e4b0bc-1590-400b-934d-d4dc9f96a11b",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "pageSize",
+											"value": "10",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/APIv2Notification/ListNotification",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"APIv2Notification",
+										"ListNotification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mark All Read",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8000/api/APIv2Notification/markallread",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"APIv2Notification",
+										"markallread"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Notify",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "8a9e0594-1eaa-440b-9fc3-80f4bd2e435a",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "notifyID",
+											"value": "34",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/APIv2Notification/readnotify",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"APIv2Notification",
+										"readnotify"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SearchMyPost",
+					"item": [
+						{
+							"name": "Get Product Details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "productId",
+											"value": "21162",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/product/GetProductDetails",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"GetProductDetails"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Products",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "staging.chewapp.co/api/v2/product/GetAllProducts?chewType=Request&currentLatitude=10.8451446&currentLongitude=106.6213256&page=1&pageSize=10",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"GetAllProducts"
+									],
+									"query": [
+										{
+											"key": "chewType",
+											"value": "Request"
+										},
+										{
+											"key": "currentLatitude",
+											"value": "10.8451446"
+										},
+										{
+											"key": "currentLongitude",
+											"value": "106.6213256"
+										},
+										{
+											"key": "serviceType",
+											"value": "FoodDelivery",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "expiring",
+											"disabled": true
+										},
+										{
+											"key": "productName",
+											"value": "anything",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										},
+										{
+											"key": "userToken",
+											"value": "7bcb8fb3-fd63-4fac-b608-3eaff860a6b7",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Posts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "8e85e4a4-287b-4556-868b-43b5b05af43f",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "chewType",
+											"value": "Request",
+											"type": "text"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "pageSize",
+											"value": "100",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/product/GetMyPostsIOS",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"GetMyPostsIOS"
+									],
+									"query": [
+										{
+											"key": "chewType",
+											"value": "Request",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "pageSize",
+											"value": "100",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "cf72d3ba-84b3-4c8a-841a-61add7692877",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get My Posts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:51992/api/v2/food/GetMyPosts?token=abcdef&chewType=Request&page=4&pageSize=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "51992",
+											"path": [
+												"api",
+												"v2",
+												"food",
+												"GetMyPosts"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "abcdef"
+												},
+												{
+													"key": "chewType",
+													"value": "Request"
+												},
+												{
+													"key": "page",
+													"value": "4"
+												},
+												{
+													"key": "pageSize",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Expires",
+											"value": "-1"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-IIS/10.0"
+										},
+										{
+											"key": "X-AspNet-Version",
+											"value": "4.0.30319"
+										},
+										{
+											"key": "X-SourceFiles",
+											"value": "=?UTF-8?B?RDpcQlNQXENoZXdBcHBcQ2hld0FwcFxDaGV3QXBwXGFwaVx2Mlxmb29kXEdldE15UG9zdHM=?="
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "ASP.NET"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 13 Dec 2019 06:44:28 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1191"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": {\n        \"message\": \"Get Foods success.\",\n        \"code\": 201\n    },\n    \"data\": [\n        {\n            \"foodID\": 89,\n            \"foodName\": \"Phở\",\n            \"foodImage\": \"fdsfdsfds\",\n            \"foodValidDate\": 1575976640.72,\n            \"foodCreatedDate\": 1575974840.72,\n            \"fromLocationName\": \"Ha Noi\",\n            \"toLocationName\": \"Any Where\",\n            \"foodDescription\": \"Món ăn việt nam\",\n            \"foodStatus\": \"Active\",\n            \"connectionCreatedDate\": 0,\n            \"connectionCount\": 0,\n            \"connectionStatus\": \"Connected\"\n        },\n        {\n            \"foodID\": 88,\n            \"foodName\": \"Phở\",\n            \"foodImage\": \"http://localhost:51992/UploadedImage/Foods/10-12-2019-174653707.png\",\n            \"foodValidDate\": 1575976613.7229998,\n            \"foodCreatedDate\": 1575974813.7229998,\n            \"fromLocationName\": \"Ha Noi\",\n            \"toLocationName\": \"Any Where\",\n            \"foodDescription\": \"Món ăn việt nam\",\n            \"foodStatus\": \"Active\",\n            \"connectionCreatedDate\": 0,\n            \"connectionCount\": 0,\n            \"connectionStatus\": \"Connected\"\n        },\n        {\n            \"foodID\": 87,\n            \"foodName\": \"Phở\",\n            \"foodImage\": \"fdsfdsfds\",\n            \"foodValidDate\": 1575976599.543,\n            \"foodCreatedDate\": 1575974799.533,\n            \"fromLocationName\": \"Ha Noi\",\n            \"toLocationName\": \"Any Where\",\n            \"foodDescription\": \"Món ăn việt nam\",\n            \"foodStatus\": \"Active\",\n            \"connectionCreatedDate\": 0,\n            \"connectionCount\": 0,\n            \"connectionStatus\": \"Connected\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 4,\n        \"pageSize\": 3,\n        \"totalCount\": 12,\n        \"totalPages\": 4,\n        \"previoutsPage\": \"Yes\",\n        \"nextPage\": \"No\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Product  by filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://staging.chewapp.co/api/v2/product/GetFilterProducts?chewType=Request&currentLatitude=1&currentLongitude=1&page=1&pageSize=10&maxDistance=3000000",
+									"protocol": "http",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"v2",
+										"product",
+										"GetFilterProducts"
+									],
+									"query": [
+										{
+											"key": "chewType",
+											"value": "Request"
+										},
+										{
+											"key": "currentLatitude",
+											"value": "1"
+										},
+										{
+											"key": "currentLongitude",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										},
+										{
+											"key": "maxDistance",
+											"value": "3000000"
+										},
+										{
+											"key": "payment",
+											"value": "cod",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "foodDelivery",
+											"disabled": true
+										},
+										{
+											"key": "productName",
+											"value": "Snacks",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Bank",
+					"item": [
+						{
+							"name": "List Card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "token",
+											"value": "ade33f66-0556-40d1-9c20-b35c6d540292",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/v2/Bank/ListCard",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"v2",
+										"Bank",
+										"ListCard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Bank Name Active",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"equals": true,
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4"
+									},
+									{
+										"key": "token",
+										"type": "text",
+										"value": "7285f3c6-6538-4a7e-a2fd-cb8ffb867614"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/v2/Bank/ListBankActive",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"v2",
+										"Bank",
+										"ListBankActive"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Bank Account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "4a060d29-a40f-4f61-9996-d59a7b5d62ba",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"disabled": true
+										},
+										{
+											"key": "token",
+											"value": "7285f3c6-6538-4a7e-a2fd-cb8ffb867614",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:51992/api/v2/Bank/ListBankAccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"Bank",
+										"ListBankAccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Save Card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "c27422e1-fb5b-45c7-99d7-0098115dc11d",
+											"type": "text"
+										},
+										{
+											"key": "expiry",
+											"value": "12/24",
+											"type": "text"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4242424242424242",
+											"type": "text"
+										},
+										{
+											"key": "nameCreditCard",
+											"value": "PHAM VAN MINH CHIEN",
+											"type": "text"
+										},
+										{
+											"key": "CardName",
+											"value": "PHAM VAN MINH CHIEN",
+											"type": "text"
+										},
+										{
+											"key": "cvv",
+											"value": "123",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/Bank/PostCard",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"Bank",
+										"PostCard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4"
+										},
+										{
+											"key": "token",
+											"value": "8a410541-df6c-45f1-8854-5b2c49a2e9c0",
+											"type": "text"
+										},
+										{
+											"key": "paymentMethodID",
+											"value": "150068",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://192.168.10.150:8900/api/v2/Bank/RemoveCard",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"10",
+										"150"
+									],
+									"port": "8900",
+									"path": [
+										"api",
+										"v2",
+										"Bank",
+										"RemoveCard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post withdrawal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"equals": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "4a060d29-a40f-4f61-9996-d59a7b5d62ba",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"disabled": true
+										},
+										{
+											"key": "amount",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "AccountBankID",
+											"value": "5043",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/WithDraw/PostWithDraw",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"WithDraw",
+										"PostWithDraw"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "WithDrawHistory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"equals": true,
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4"
+									},
+									{
+										"key": "token",
+										"value": "f1b99f39-bba9-4103-afbe-921d4fe93229",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:51992/api/v2/WithDraw/GetWithDrawHistory",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"v2",
+										"WithDraw",
+										"GetWithDrawHistory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Save Bank account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "03193378-fbd8-4b1a-92e3-3c3eb8eac2f1",
+											"type": "text"
+										},
+										{
+											"key": "bankName",
+											"value": "HSBC",
+											"type": "text"
+										},
+										{
+											"key": "accountNumber",
+											"value": "12311231",
+											"type": "text"
+										},
+										{
+											"key": "payNowNumber",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "accountName",
+											"value": "123123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/Bank/SaveBankAccount",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"Bank",
+										"SaveBankAccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Bank Account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "sig",
+										"value": "7a09a9bd360602e719e0b71e3eae55b4",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "03193378-fbd8-4b1a-92e3-3c3eb8eac2f1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/Bank/RemoveBankAccount/84",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"Bank",
+										"RemoveBankAccount",
+										"84"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Stripe3DSecure",
+					"item": [
+						{
+							"name": "CreateIntent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/Payment3DSecure/CreateSetupIntent",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"Payment3DSecure",
+										"CreateSetupIntent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "c27422e1-fb5b-45c7-99d7-0098115dc11d",
+											"type": "text"
+										},
+										{
+											"key": "expiry",
+											"value": "12/24",
+											"type": "text"
+										},
+										{
+											"key": "cardNumber",
+											"value": "4000000000003220",
+											"type": "text"
+										},
+										{
+											"key": "nameCreditCard",
+											"value": "Pham van minh chien",
+											"type": "text"
+										},
+										{
+											"key": "cvv",
+											"value": "123",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/Payment3DSecure/AddCard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"Payment3DSecure",
+										"AddCard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Intent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "Customer",
+											"value": "cus_HTBVGvLuvV4yM3",
+											"type": "text"
+										},
+										{
+											"key": "PaymentMethod",
+											"value": "card_1GuFQ3F5a0SSwY1eGpeIorDA",
+											"type": "text"
+										},
+										{
+											"key": "IntentId",
+											"value": "pi_1GuVQwF5a0SSwY1elc3bfdEe",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Amount",
+											"value": "50000",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/Payment3DSecure/CreateSetupIntent",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"Payment3DSecure",
+										"CreateSetupIntent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm Intent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "Customer",
+											"value": "cus_HTBVGvLuvV4yM3",
+											"type": "text"
+										},
+										{
+											"key": "PaymentMethod",
+											"value": "card_1GuFQ3F5a0SSwY1eGpeIorDA",
+											"type": "text"
+										},
+										{
+											"key": "IntentId",
+											"value": "seti_1GuWjqF5a0SSwY1ebix40uaS",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "localhost:51992/api/Payment3DSecure/ConfirmSetupIntent",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"Payment3DSecure",
+										"ConfirmSetupIntent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Stripe api",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "sk_test_c8zFnKHXKJvwrBT6L9caOPdi00DGukPXdN",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.stripe.com/v1/charges?payment_intent=pi_1GuVQwF5a0SSwY1elc3bfdEe",
+									"protocol": "https",
+									"host": [
+										"api",
+										"stripe",
+										"com"
+									],
+									"path": [
+										"v1",
+										"charges"
+									],
+									"query": [
+										{
+											"key": "payment_intent",
+											"value": "pi_1GuVQwF5a0SSwY1elc3bfdEe"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SuccessAfterVerify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:51992/api/Payment3DSecure/VerifySuccess?setup_intent=seti_1H56j9F5a0SSwY1eqcMDE2NM&setup_intent_client_secret=seti_1H56j9F5a0SSwY1eqcMDE2NM_secret_HePYKYYFYQd9gG8miCJ5G2Zgg3cBwpv&source_type=card",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "51992",
+									"path": [
+										"api",
+										"Payment3DSecure",
+										"VerifySuccess"
+									],
+									"query": [
+										{
+											"key": "setup_intent",
+											"value": "seti_1H56j9F5a0SSwY1eqcMDE2NM"
+										},
+										{
+											"key": "setup_intent_client_secret",
+											"value": "seti_1H56j9F5a0SSwY1eqcMDE2NM_secret_HePYKYYFYQd9gG8miCJ5G2Zgg3cBwpv"
+										},
+										{
+											"key": "source_type",
+											"value": "card"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "UploadImageFor",
+								"value": "user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/phamv/OneDrive/Desktop/Image/123.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:51992/api/v2/UploadImage/Post",
+							"host": [
+								"localhost"
+							],
+							"port": "51992",
+							"path": [
+								"api",
+								"v2",
+								"UploadImage",
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "UploadImageFor",
+								"value": "user",
+								"type": "text"
+							},
+							{
+								"key": "sig",
+								"value": "7a09a9bd360602e719e0b71e3eae55b4",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "9ffec5c1-f041-430e-956b-fd5f13178a72",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "imageUrl",
+									"value": "http://staging.chewapp.co/UploadedImage/Galleries/mala.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "staging.chewapp.co/api/v2/UploadImage/Remove",
+							"host": [
+								"staging",
+								"chewapp",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"UploadImage",
+								"Remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:51992/api/AppVersion/GetLastVersion/ios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://admin.chewapp.co/api/AppVersion/GetLastVersion/IOS",
+							"protocol": "https",
+							"host": [
+								"admin",
+								"chewapp",
+								"co"
+							],
+							"path": [
+								"api",
+								"AppVersion",
+								"GetLastVersion",
+								"IOS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list image setting app SignIn",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "sig",
+								"type": "text",
+								"value": "7a09a9bd360602e719e0b71e3eae55b4"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/ImageScreenSetting/GetListImagesSignIn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ImageScreenSetting",
+								"GetListImagesSignIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list image setting app SignOut",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "sig",
+								"type": "text",
+								"value": "7a09a9bd360602e719e0b71e3eae55b4"
+							}
+						],
+						"url": {
+							"raw": "{{stag}}/api/ImageScreenSetting/GetListImagesSignOut",
+							"host": [
+								"{{stag}}"
+							],
+							"path": [
+								"api",
+								"ImageScreenSetting",
+								"GetListImagesSignOut"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "staging",
+			"item": [
+				{
+					"name": "User Login",
+					"item": [
+						{
+							"name": "Registry",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "fullname",
+											"value": "Minh Chiến",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "minhchien1996@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "pass",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "sig",
+											"value": "7a09a9bd360602e719e0b71e3eae55b4",
+											"type": "text"
+										},
+										{
+											"key": "referral",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "type_device",
+											"value": "ios",
+											"type": "text"
+										},
+										{
+											"key": "token_device",
+											"value": "uuid",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "staging.chewapp.co/api/APIv2Account/UserRegistry",
+									"host": [
+										"staging",
+										"chewapp",
+										"co"
+									],
+									"path": [
+										"api",
+										"APIv2Account",
+										"UserRegistry"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "UserLogin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "devonline@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "123456dev",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "7a09a9bd360602e719e0b71e3eae55b4",
+									"type": "text"
+								},
+								{
+									"key": "type_device",
+									"value": "UUID",
+									"type": "text"
+								},
+								{
+									"key": "token_device",
+									"value": "iso",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://staging.chewapp.co/api/APIv2Account/UserLogin",
+							"protocol": "http",
+							"host": [
+								"staging",
+								"chewapp",
+								"co"
+							],
+							"path": [
+								"api",
+								"APIv2Account",
+								"UserLogin"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9b1ab1fa-bd61-467f-bcd7-bb2b11b84aad",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "105623d4-518b-410a-8a27-6a187145faf0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6e7a31ed-5004-4bbc-a16c-576c665cf133",
+			"key": "url",
+			"value": "https://admin.chewapp.co"
+		},
+		{
+			"id": "e61e95e7-72cc-4e2e-9396-f525c942bca8",
+			"key": "stag",
+			"value": "http://staging.chewapp.co"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -38,20 +38,19 @@ class AdminController extends Controller
 
     public function active($id)
     {
-        $user = User_role::find($id);
-        $user->status = 1;
-        $user->save();
+        
+        DB::table('user_role_tbl')
+              ->where('user_id', $id)
+              ->update(['status' => 1]);
         return redirect('user');
     }
 
     public function disable($id)
     {
-        $user = User_role::find($id);
-        if($id == 1){
-            return redirect('user');
-        }
-        $user->status = 0;
-        $user->save();
+        
+        DB::table('user_role_tbl')
+              ->where('user_id', $id)
+              ->update(['status' => 0]);
         return redirect('user');
     }
 
@@ -68,7 +67,8 @@ class AdminController extends Controller
         //
         $users = DB::table('users_tbl')
             ->join('user_role_tbl', 'users_tbl.id', '=', 'user_role_tbl.user_id')
-            ->select('users_tbl.*', 'user_role_tbl.status',)
+            ->select('users_tbl.*', 'user_role_tbl.status')
+            ->where('users_tbl.id','<>',1)
             ->orderBy('id','desc')
             ->get();
         return view('admin.user.user_list',['users'=>$users]);
@@ -154,10 +154,12 @@ class AdminController extends Controller
         $IDate = $request->input('IDate');
         $StartJob =  $request->input('StartJob');
 
-        $birthday = date_format(date_create($birthday),'Y-m-d');
+
+        $birthday = date_format(date_create($birthday),'Y-m-d H:i:s');
         $IDate = date_format(date_create($IDate),'Y-m-d H:i:s');
         $StartJob = date_format(date_create($StartJob),'Y-m-d H:i:s');
 
+        
         $user->fullname = $request->input('fullname');
         $user->email = $request ->input('email');
         $user->phone = $request ->input('phone');
@@ -166,13 +168,17 @@ class AdminController extends Controller
         $user->issue_place = $request ->input('IPlace');
         $user->university = $request ->input('university');
         $user->year_of_graduate = $request ->input('YOG');
-       // $user->avatar = $request ->input('avatar');
         $user->note = $request ->input('note');
         $user->birthday = $birthday;
         $user->issue_date = $IDate;
         $user->start_job_at_company = $StartJob;
         
-        
+        $request->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'email' => 'email:rfc,dns',
+        ], [
+        ]);
+
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $destinationPath = public_path().'/image/';
@@ -207,12 +213,18 @@ class AdminController extends Controller
     public function destroy(Request $request ,$id)
     {
         //
+        if($id == 1)
+        {
+            $request->session()->flash('status',"You cann't delete admin!!!");
+            return redirect('user');
+        }
         Users::destroy($id);
         Dayoff::where('user_id', $id)->delete();
         Overtime::where('user_id', $id)->delete();
         User_role::where('user_id', $id)->delete();
         Salary::where('user_id', $id)->delete();
 
+        
         $request->session()->flash('status','Delete successful');
         return redirect('user');
     }

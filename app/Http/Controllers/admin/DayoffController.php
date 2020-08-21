@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Dayoff;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,17 +14,25 @@ class DayoffController extends Controller
     {
         //
         $user = Dayoff::find($id);
-        $user->status = 1;
-        $user->save();
+
+        if ($user->status == null) {
+            $user->status = 1;
+            $user->save();
+            return redirect('dayoff');
+        }
         return redirect('dayoff');
+
     }
 
     public function reject(Request $request, $id)
     {
         //
         $user = Dayoff::find($id);
-        $user->status = 0;
-        $user->save();
+        if ($user->status == null) {
+            $user->status = 0;
+            $user->save();
+            return redirect('dayoff');
+        }
         return redirect('dayoff');
     }
     /**
@@ -40,7 +48,7 @@ class DayoffController extends Controller
             ->select('users_tbl.fullname', 'dayoff_tbl.*')
             ->orderBy('id', 'desc')
             ->get();
-        return view('admin.dayoff.dayoff',['data'=>$data]);
+        return view('admin.dayoff.dayoff', ['data' => $data]);
     }
 
     public function confirm(Request $request)
@@ -50,9 +58,9 @@ class DayoffController extends Controller
         $data = DB::table('users_tbl')
             ->join('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
             ->select('users_tbl.fullname', 'dayoff_tbl.*')
-            ->where('dayoff_tbl.id',$id)
+            ->where('dayoff_tbl.id', $id)
             ->get();
-        return view('admin.dayoff.show_dayoff_confirm',['items'=>$data]);
+        return view('admin.dayoff.show_dayoff_confirm', ['items' => $data]);
     }
 
     public function indexDayOffToMonth()
@@ -60,33 +68,32 @@ class DayoffController extends Controller
         //
         $data = DB::table('users_tbl')
             ->join('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
-            ->select( DB::raw('
+            ->select(DB::raw('
             fullname,
-            YEAR(start_date) as year , 
-            MONTH(start_date) as month , 
+            YEAR(start_date) as year ,
+            MONTH(start_date) as month ,
             SUM(number_day_off) AS totalDay'))
-            ->groupBy('year','month','user_id')
+            ->groupBy('year', 'month', 'user_id')
             ->get();
 
-        return view('admin.dayoff.show_dayoff_to_month',['data'=>$data]);
+        return view('admin.dayoff.show_dayoff_to_month', ['data' => $data]);
     }
-
 
     public function indexDayOffToYear()
     {
-       
+
         //
         $data = DB::table('users_tbl')
             ->leftJoin('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
-            ->select( DB::raw('
+            ->select(DB::raw('
             fullname,
-            YEAR(start_date) as year , 
+            YEAR(start_date) as year ,
             SUM(number_day_off) AS totalDay'))
-            ->groupBy('year','fullname')
+            ->groupBy('year', 'fullname')
             ->get();
 
         // dd($data);
-        return view('admin.dayoff.show_dayoff_to_year',['data'=>$data]);
+        return view('admin.dayoff.show_dayoff_to_year', ['data' => $data]);
     }
     /**
      * Show the form for creating a new resource.
@@ -141,15 +148,14 @@ class DayoffController extends Controller
     public function update(Request $request)
     {
         //
+
         $dayoff = Dayoff::find($request->id);
 
-        if($request->status == 'approve')
-        {
+        if ($request->status == 'approve') {
             $dayoff->status = 1;
             $dayoff->save();
             return redirect('dayoff');
-        }else
-        {
+        } else {
             $dayoff->status = 0;
             $dayoff->save();
             return redirect('dayoff');
@@ -162,16 +168,16 @@ class DayoffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,  $id)
+    public function destroy(Request $request, $id)
     {
         //
+
         $record = Dayoff::destroy($id);
-        if($record){
-            $request->session()->flash('status','Delete successful');
+        if ($record) {
+            $request->session()->flash('status', 'Delete successful');
             return redirect('dayoff');
-        }else
-        {
-            $request->session()->flash('status','Delete fail');
+        } else {
+            $request->session()->flash('status', 'Delete fail');
             return redirect('dayoff');
         }
     }

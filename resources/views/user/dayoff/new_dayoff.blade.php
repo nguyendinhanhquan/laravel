@@ -36,7 +36,7 @@
 
 
 
-                    <form role="form" action="user_create_dayoff" method="post" enctype="multipart/form-data">
+                    <form id="dayoff" role="form" action="user_create_dayoff" method="post" enctype="multipart/form-data">
 
                         @csrf
 
@@ -50,43 +50,30 @@
                             <div class="form-group">
                                 <label>From (day):</label>
                                 <div class="input-group date" id="reservationdate1" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate1" name="startDate" required />
                                     <div class="input-group-append" data-target="#reservationdate1"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
+                                    <input readonly type="text" class="form-control datetimepicker-input"
+                                        data-target="#reservationdate1" name="startDate" required id="startDate"
+                                        onblur="checkValueDate()" />
+                                    <label class="error" id="checkValueDate" for="startDate"></label>
                                 </div>
                             </div>
 
-                            {{-- <!-- /.form group -->
-                            <!-- Date range -->
-                            <div class="form-group">
-                                <label>Date range:</label>
 
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </span>
-                                    </div>
-                                    <input type="text" class="form-control float-right" id="reservation">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group --> --}}
 
 
                             <!-- Date -->
                             <div class="form-group">
                                 <label> To (day):</label>
                                 <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate2" name="endDate" required />
                                     <div class="input-group-append" data-target="#reservationdate2"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
+                                    <input readonly type="text" class="form-control datetimepicker-input"
+                                        data-target="#reservationdate2" name="endDate" required id="endDate" disabled />
                                 </div>
                             </div>
                             @if (Session::get('status'))
@@ -98,8 +85,9 @@
 
 
                             <div class="form-group">
-                                <label for="note">Reason</label>
-                                <textarea class="form-control" name="reason" id="" cols="100" rows="5" required></textarea>
+                                <label for="reason">Reason</label>
+                                <textarea class="form-control" name="reason" id="reason" cols="100" rows="3"
+                                    required></textarea>
                             </div>
 
 
@@ -135,14 +123,24 @@
 
 @section('script')
     <script type="text/javascript">
-        $(function() {
+    
+        var now = Date.now();
 
+        var CurrentDate = new Date();
+        var max1Month = CurrentDate.setMonth(CurrentDate.getMonth() + 1);
+
+        $(function() {
             $('#reservationdate1').datetimepicker({
                 format: "DD-MM-YYYY",
+                minDate: now,
+                ignoreReadonly: true,
             })
 
             $('#reservationdate2').datetimepicker({
                 format: "DD-MM-YYYY",
+                minDate: now,
+                maxDate: max1Month,
+                ignoreReadonly: true,
             })
 
             //Date range picker

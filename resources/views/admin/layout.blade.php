@@ -33,6 +33,9 @@
     <!-- DataTables -->
     <link rel="stylesheet" href={{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}>
     <link rel="stylesheet" href={{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}>
+
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -52,24 +55,30 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-               
+
                 <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" data-toggle="tooltip" data-placement="left" title="Notify Request">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-danger navbar-badge">{{$dayoff + $overtime}}</span>
+                        @if ($dayoff + $overtime > 0)
+                            <span class="badge badge-danger navbar-badge">
+                                {{ $dayoff + $overtime }}
+                            </span>
+                        @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">{{$dayoff + $overtime}} Notifications</span>
+                        <span class="dropdown-item dropdown-header">{{ $dayoff + $overtime }} Notifications</span>
                         <div class="dropdown-divider"></div>
                         <a href="{{ url('dayoff') }}" class="dropdown-item">
-                            <i class="fas fa-calendar-day mr-2"></i> {{$dayoff}} Dayoff requests
-                            {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
+                            <i class="fas fa-calendar-day mr-2"></i> {{ $dayoff }} Dayoff requests
+                            {{-- <span class="float-right text-muted text-sm">3
+                                mins</span> --}}
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ url('list-task') }}" class="dropdown-item">
-                            <i class="fas fa-clock mr-2"></i> {{$overtime}} Overtime requests
-                            {{-- <span class="float-right text-muted text-sm">12 hours</span> --}}
+                            <i class="fas fa-clock mr-2"></i> {{ $overtime }} Overtime requests
+                            {{-- <span class="float-right text-muted text-sm">12
+                                hours</span> --}}
                         </a>
                         {{-- <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
@@ -77,7 +86,8 @@
                             <span class="float-right text-muted text-sm">2 days</span>
                         </a> --}}
                         <div class="dropdown-divider"></div>
-                        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
+                        {{-- <a href="#" class="dropdown-item dropdown-footer">See All
+                            Notifications</a> --}}
                     </div>
                 </li>
 
@@ -100,7 +110,7 @@
                     </div>
                     <div class="info">
 
-                        <a href="{{ asset('/admin')}}" class="d-block">
+                        <a href="{{ asset('/admin') }}" class="d-block">
                             @if (Session::get('username'))
                                 <h5> {{ Session::get('username') }} </h5>
                             @endif
@@ -140,7 +150,7 @@
                             </a>
                         </li>
 
-                        
+
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link
@@ -154,7 +164,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
+
                                 <li class="nav-item">
                                     <a href="{{ url('salary-basic') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -162,13 +172,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('salary/month/'.now()->month ) }}" class="nav-link ">
+                                    <a href="{{ url('salary/month/' . now()->month) }}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            Salary of Staff 
+                                            Salary of Staff
                                         </p>
                                     </a>
-                                </li>   
+                                </li>
 
                             </ul>
                         </li>
@@ -185,7 +195,12 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
+                                <li class="nav-item">
+                                    <a href="{{ url('new-task-admin') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>New task</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ url('list-task') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -236,14 +251,15 @@
                             </ul>
                         </li>
 
-                        
+
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link
                             {{ Request::is('logout') ? 'active' : '' }}
                             {{ Request::is('password') ? 'active' : '' }}
                             ">
-                                {{-- <i class="nav-icon fas fa-address-book"></i> --}}
+                                {{-- <i class="nav-icon fas fa-address-book"></i>
+                                --}}
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Option
@@ -251,7 +267,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
+
                                 <li class="nav-item">
                                     <a href="{{ url('password') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -270,7 +286,7 @@
                             </ul>
                         </li>
 
-                        
+
 
                     </ul>
                 </nav>
@@ -347,6 +363,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src={{ asset('dist/js/demo.js') }}></script>
 
+
+    <!-- JQuery Validator -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <!-- My Script JS -->
+    <script src={{ asset('js/myjs.js') }}></script>
 
     <section class="script">
         @yield('script')

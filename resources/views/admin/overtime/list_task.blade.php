@@ -28,9 +28,14 @@
                     {{ Session::get('status') }}
                 </div>
             @endif
+            @if (Session::get('error-delete'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error-delete') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">My task</h3>
+                    <h3 class="card-title">List task</h3>
 
                 </div>
                 <!-- /.card-header -->
@@ -48,7 +53,6 @@
                                 <th>Total Time</th>
                                 <th>Task Name</th>
                                 <th>Status</th>
-                                <th>feedback</th>
                                 <th>Option</th>
                             </tr>
                         </thead>
@@ -58,32 +62,69 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->fullname }}</td>
-                                    <td>{{ date_format(date_create($item->date_ot), 'd-m-Y') }}</td>
-                                    <td>{{ date_format(date_create($item->start_time), 'H:i') }}</td>
-                                    <td>{{ date_format(date_create($item->end_time), 'H:i') }}</td>
-                                    <td>{{ $item->total_time }} minutes</td>
+                                    <td>
+                                        @if ($item->date_ot != null)
+                                            {{ date_format(date_create($item->date_ot), 'd-m-Y') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->start_time != null)
+                                            {{ date_format(date_create($item->start_time), 'H:i') }}
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if ($item->end_time != null)
+                                            {{ date_format(date_create($item->end_time), 'H:i') }}
+                                        @else
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->total_time != 0)
+                                            {{ $item->total_time }} minutes
+                                        @endif
+                                    </td>
                                     <td>{{ $item->task_name }}</td>
                                     <td class="text-center">
 
                                         @if ($item->status === 1)
-                                            <b><p class="text-success">  Approve</i></p></b>
+                                            <b data-toggle="tooltip" data-placement="top" title="Admin approve task">
+                                                <p class="text-success"> Approve</i></p>
+                                            </b>
                                         @elseif ($item->status === 0 )
-                                            <b><p class="text-danger"> Reject</p></b>
+                                            <b data-toggle="tooltip" data-placement="top" title="Admin reject task">
+                                                <p class="text-danger"> Reject</p>
+                                            </b>
+                                        @elseif ($item->status === 3 )
+                                            <b data-toggle="tooltip" data-placement="top" title="User confirm task">
+                                                <p class="text-warning">Confirm</p>
+                                            </b>
                                         @else
-                                            <b><p class="text-info">Wating ...</p></b>
+                                            <b data-toggle="tooltip" data-placement="top" title="Admin add new task">
+                                                <p class="text-info">New</p>
+                                            </b>
                                         @endif
 
                                     </td>
-                                    <td>
-                                        {{ $item->feedback }}
-                                    </td>
+
                                     <td class="option">
-                                        <a href="list-task/{{ $item->id }}" class="btn btn-primary bg-color" >
+                                        <a href="list-task/{{ $item->id }}" class="btn btn-primary bg-color"
+                                            data-toggle="tooltip" data-placement="top" title="Detail task overtime">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <button  class="btn btn-primary bg-color " onclick="deleteJS({{ $item->id }})">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        @if ($item->status === null)
+                                            <button class="btn btn-primary bg-color " onclick="deleteJS({{ $item->id }})"
+                                                data-toggle="tooltip" data-placement="top" title="Delete task overtime">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @else
+                                            <button disabled class="btn btn-primary bg-color "
+                                                onclick="deleteJS({{ $item->id }})" data-toggle="tooltip"
+                                                data-placement="top" title="Delete task overtime">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -99,6 +140,7 @@
         <!-- /.col -->
     </div>
 
+    {{-- Nut xoa --}}
     <!-- Modal HTML -->
     <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
@@ -140,7 +182,9 @@
                 "responsive": true,
                 "autoWidth": false,
                 "searching": true,
-                "order": [[ 0, "desc" ]]
+                "order": [
+                    [0, "desc"]
+                ]
 
             });
             $('#example2').DataTable({
@@ -161,7 +205,7 @@
 
             $('#reservationdate1').datetimepicker({
                 format: "DD-MM-YYYY",
-                
+
             })
 
             $('#reservationdate2').datetimepicker({

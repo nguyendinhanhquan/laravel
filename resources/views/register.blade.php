@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AdminLTE 3 | Log in</title>
+    <!-- My Css -->
+    <link rel="stylesheet" href="{{ asset('css/mycss.css') }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/mycss.css">
@@ -29,59 +31,68 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Register</p>
-                @if(Session::get('status'))
+                @if (Session::get('status'))
                     <div class="alert alert-danger" role="alert">
-                        {{Session::get('status')}}
+                        {{ Session::get('status') }}
                     </div>
                 @endif
-                
+
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger" role="alert">
                         {{ $error }}
                     </div>
                 @endforeach
 
-                <form action="register" method="post">
+                <form onblur="checkFormRegister()" id="register" action="register" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username" >
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-user mw-icon"></span>
                             </div>
                         </div>
+                        <input type="text" class="form-control border-right" placeholder="Username" id="username"
+                            name="username">
+
                     </div>
-                    
+
 
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email" required>
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-at"></span>
+                                <span class="fas fa-at mw-icon"></span>
                             </div>
                         </div>
+                        <input type="email" class="form-control border-right" placeholder="Email" name="email" required>
+
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password" required>
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span toggle="#password" class="mw-icon fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                         </div>
+                        <input type="password" class="form-control border-right" placeholder="Password" id="password"
+                            name="password" required>
+
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Confirm password" name="password2" required>
-                        <div class="input-group-append">
+                        <div class="input-group-append border-left">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span toggle="#confirm_password" class="mw-icon fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                         </div>
+                        <input type="password" class="form-control border-right" placeholder="Confirm password"
+                            id="confirm_password" name="password2" required>
+
                     </div>
-                    <p class="text-info" style="font-size: 16px">Password minimum 7 character, at least one uppercase letter, one number and one special character</p>
+                    <p class="text-info" style="font-size: 16px">Password minimum 7 character, at least one uppercase
+                        letter, one number and one special character</p>
                     <div class="row">
-                        
+
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block bg-color" name="login" value="Login">Registration</button>
+                            <button type="submit" class="btn btn-primary btn-block bg-color" name="login"
+                                value="Login">Registration</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -108,6 +119,10 @@
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
 
+    <!-- JQuery Validator -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <!-- My Script JS -->
+    <script src={{ asset('js/myjs.js') }}></script>
 </body>
 
 </html>
