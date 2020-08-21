@@ -18,7 +18,7 @@ class SalaryController extends Controller
      */
     public function salaryBasic()
     {
-        $data = Users::all();
+        $data = Users::where('id', '!=', 1 )->get();
         $data2 = DB::table('users_tbl')
             ->leftJoin('salary_tbl', 'users_tbl.id', '=', 'salary_tbl.user_id')
             ->select('users_tbl.id', 'users_tbl.fullname', 'salary_tbl.*', )
@@ -28,28 +28,7 @@ class SalaryController extends Controller
         return view('admin.salary.salary_basic', ['data2' => $data2, 'data' => $data]);
     }
 
-    // public function january()
-    // {
-    //     $data = DB::table('users_tbl')
-    //         ->leftJoin('dayoff_tbl', 'users_tbl.id', '=', 'dayoff_tbl.user_id')
-    //         ->select(DB::raw('
-    //         users_tbl.id,
-    //         fullname,
-    //         MONTH(start_date) as month,
-    //         YEAR(start_date) as year ,
-    //         SUM(number_day_off) AS totalDay'
-    //         ))
-    //         ->whereMonth('start_date', '1')
-    //         ->groupBy('year', 'month', 'fullname', 'id')
-
-    //         ->get();
-
-    //     dd($data);
-    //     //->whereYear('start_date', '2020')
-    //     return view('admin.salary.salary', ['data' => $data]);
-
-    // }
-
+    
     public function index($id)
     {
         $month_id = $id;
@@ -95,13 +74,15 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         //
-
+        $money = $request->get('basic_salary');
+        $money = str_replace(",", "", $money);
+        
         Salary::updateOrCreate(
             [
                 'user_id' => $request->get('user_id'),
             ],
             [
-                'basic_salary' => $request->get('basic_salary'),
+                'basic_salary' =>  $money,
             ]
         );
         return redirect('salary-basic');

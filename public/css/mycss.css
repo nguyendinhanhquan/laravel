@@ -1,7 +1,6 @@
-
-.wh-300 img{
-    width: 300px  ;
-    height: 300px;
+.wh-300 img {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -9,83 +8,119 @@
     font-size: 0.8em !important;
 }
 
-.bg-color{
+.bg-color {
     background-color: #343a40 !important;
     outline: none !important;
     border: none !important;
 }
 
-.option{
+.option {
     text-align: center;
 }
 
 .option-btn,
-.option-btn:hover{
+.option-btn:hover {
     color: white;
 }
 
-
-
-
-.card-primary.card-outline{
+.card-primary.card-outline {
     border-top: 3px solid #343a40 !important;
 }
 
-.w-50{
+.w-50 {
     width: 50px;
 }
 
-.active{
-    background-color: rgba(255,255,255,.1) !important;
+.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.btn-custom a{
-    padding: 0;
-}
-
-.btn-custom a i{
-    width: 50px;
-    height: 45px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.error {
+    z-index: 100;
+    color: red;
+    font-weight: normal !important;
+    clear: both;
+    width: 100%;
+    margin: 0;
 }
 
 .option a:hover,
-.option button:hover{
+.option button:hover {
     transform: scale(1.1);
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .option a,
-.option button{
+.option button {
     margin: 2px !important;
 }
 
-
-.salary{
+.salary {
     padding: 1.25rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.salary a{
+.salary a {
     background-color: #343a40;
     color: white;
     margin: 0 20px;
     padding: 10px 20px;
-    border-radius: .25rem;
-    margin: .5rem;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
 }
 
-.salary a.active{
-    background-color: #17a2b8!important;
+.salary a.active {
+    background-color: #17a2b8 !important;
 }
 
-.salary a:hover{
+.salary a:hover {
     color: white;
     transform: scale(1.1);
-    transition: .5s;
+    transition: 0.5s;
+}
+
+.input-group-text {
+    border-radius: 0.25rem 0 0 0.25rem !important;
+    border-right: none !important;
+}
+
+.border-left {
+    border-left: 1px solid rgb(206, 212, 218);
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.border-right {
+    border-right: 1px solid rgb(206, 212, 218);
+    /* border-radius: .25rem 0 0 .25rem; */
+}
+
+.text-muted {
+    min-height: 30px !important;
+}
+
+.custom-file-label {
+    width: 100%;
+}
+/* .password{
+    position: absolute;
+} */
+/* .field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+  }
+   */
+
+.mw-icon {
+    width: 30px !important;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
 }

@@ -29,14 +29,14 @@
                 <div class="card card-primary">
 
                     <div class="card-header bg-color">
-                        <h3 class="card-title">Create New Dayoff</h3>
+                        <h3 class="card-title">Create New Task</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
 
 
 
-                    <form role="form" action="new_task" method="post" enctype="multipart/form-data">
+                    <form id="overtime" role="form" action="new_task" method="post" enctype="multipart/form-data">
 
                         @csrf
                         <div class="card-body">
@@ -49,12 +49,13 @@
                             <div class="form-group">
                                 <label>Day Overtime:</label>
                                 <div class="input-group date" id="reservationdate1" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate1" name="date_ot" required />
                                     <div class="input-group-append" data-target="#reservationdate1"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
+                                    <input type="text" onblur="checkDateOT()" class="form-control datetimepicker-input"
+                                        data-target="#reservationdate1" name="date_ot" required id="day_overtime" />
+                                    <label class="error" id="checkValueDate" for="date_ot"></label>
                                 </div>
                             </div>
 
@@ -64,12 +65,14 @@
                                     <label>Start Time:</label>
 
                                     <div class="input-group date" id="timepicker1" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input"
-                                            data-target="#timepicker1" name="start_time" required />
                                         <div class="input-group-append" data-target="#timepicker1"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-clock"></i></div>
                                         </div>
+                                        <input onblur="checkStartTime()" type="text"
+                                            class="form-control datetimepicker-input" data-target="#timepicker1"
+                                            name="start_time" required id="start_time" />
+
                                     </div>
                                     <!-- /.input group -->
                                 </div>
@@ -88,12 +91,13 @@
                                     <label>End Time:</label>
 
                                     <div class="input-group date" id="timepicker2" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input"
-                                            data-target="#timepicker2" name="end_time" required />
                                         <div class="input-group-append" data-target="#timepicker2"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-clock"></i></div>
                                         </div>
+                                        <input onblur="checkEndTime()" type="text" class="form-control datetimepicker-input"
+                                            data-target="#timepicker2" name="end_time" required id="end_time" disabled />
+                                        <label class="error" id="endTime_error" for="end_time"></label>
                                     </div>
                                     <!-- /.input group -->
                                 </div>
@@ -108,38 +112,18 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Place OT</label>
-                                <input type="text" class="form-control" name="place_ot" value="" required>
+                                <input type="text" class="form-control" name="place_ot" value="" id="place_ot" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Task name</label>
-                                <input type="text" class="form-control" name="task_name" value="" required>
+                                <input type="text" class="form-control" name="task_name" value="" id="task_name" required>
                             </div>
-
-                            {{--
-                            <!-- Date -->
-                            <div class="form-group">
-                                <label> To (day):</label>
-                                <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate2" name="endDate" required />
-                                    <div class="input-group-append" data-target="#reservationdate2"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            @if (Session::get('status'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ Session::get('status') }}
-                                </div>
-                            @endif --}}
-
 
 
                             <div class="form-group">
                                 <label for="note">Note</label>
-                                <textarea class="form-control" name="note" id="" cols="100" rows="3"></textarea>
+                                <textarea class="form-control" name="note" id="note" cols="100" rows="3"></textarea>
                             </div>
 
 
@@ -187,12 +171,12 @@
 
             //Timepicker
             $('#timepicker1').datetimepicker({
-                format: 'LT'
+                format: 'HH:mm'
             })
 
             //Timepicker
             $('#timepicker2').datetimepicker({
-                format: 'LT'
+                format: 'HH:mm'
             })
         });
 

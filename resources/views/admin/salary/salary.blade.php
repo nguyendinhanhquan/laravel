@@ -37,10 +37,14 @@
                     </div>
                     <div class="card-header p-0">
                         <div class="salary p-0">
-                            <a class="bg-info" href="{{ route('generate-pdf', ['id' => request()->route('id')]) }}">PDF
+                            <a class="bg-info" href="{{ route('generate-pdf', ['id' => request()->route('id')]) }}"
+                            data-toggle="tooltip" data-placement="top" title="Download File PDF Salary Month {{ $month }}"
+                                >PDF
                                 Download</a>
                             <a href="{{ route('excel', ['id' => request()->route('id')]) }}"
-                                class="btn btn-info export border-0 bg-info" id="export-button"> Excel Download </a>
+                                class="btn btn-info export border-0 bg-info" id="export-button"
+                                data-toggle="tooltip" data-placement="top" title="Download File Excel Salary Month {{ $month }}"
+                                > Excel Download </a>
                         </div>
                         {{-- {{ route('export') }} --}}
                     </div>

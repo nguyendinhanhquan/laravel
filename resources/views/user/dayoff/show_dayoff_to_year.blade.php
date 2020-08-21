@@ -48,31 +48,9 @@
                     <td>{{$item->year}}</td>
                     <td>{{$item->totalDay}} day</td>
                     <td> 
-                      
-                      @if ($item->totalDay < 12)
                           {{12-$item->totalDay }} day
-                      @else
-                          0 day
-                      @endif
-                 
-
                     </td>
-                    {{-- <td class="text-center">
-              
-                        @if ($item->status === 1 )
-                           <p class="text-success"> <i class="fas fa-check"></i></p>
-                        @elseif ($item->status === 0 )
-                            <p class="text-danger"><i class="fas fa-times"></i></p>
-                        @else
-                            <p class="text-info">Wating ...</p>
-                        @endif
-        
-                      </td>
-                      <td class="option">
-                        <a href="#" class="btn btn-primary bg-color">
-                          <i class="fas fa-trash"></i>
-                        </a>
-                      </td> --}}
+                    
                   </tr>
                   @endforeach
 

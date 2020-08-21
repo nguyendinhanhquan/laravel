@@ -36,7 +36,7 @@
 
                     
                 <tr>
-                  <th>Fullnaem</th>
+                  <th>Fullname</th>
                   <th>Year</th>
                   <th>Month</th>
                   <th>Total In Month</th>

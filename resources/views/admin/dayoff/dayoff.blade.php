@@ -45,6 +45,7 @@
                                     <th>Fullname</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th>Number dayoff</th>
                                     <th>Reason</th>
                                     <th>Status</th>
                                     <th>Option</th>
@@ -58,6 +59,7 @@
                                         <td>{{ $item->fullname }}</td>
                                         <td>{{ date_format(date_create($item->start_date), 'd-m-Y') }}</td>
                                         <td>{{ date_format(date_create($item->end_date), 'd-m-Y') }}</td>
+                                        <td>{{ $item->number_day_off }}</td>
                                         <td>{{ $item->reason_day_off }}</td>
                                         <td class="text-center">
 
@@ -71,21 +73,33 @@
 
                                         </td>
                                         <td class="option btn-custom">
-                                            {{-- <a href="dayoff/{{ $item->id }}" class="btn btn-primary bg-color mx-1">
-                                                <i class="fas fa-info-circle"></i>
-                                            </a> --}}
-                                            <a href="dayoff/{{ $item->id }}/yes" class="btn btn-primary bg-color mx-1 bg-success">
-                                                <i class="fas fa-check"></i>
-                                            </a>
-                                            <a href="dayoff/{{ $item->id }}/no" class="btn btn-primary bg-color mx-1 bg-danger">
-                                                <i class="fas fa-times"></i>
-                                            </a>
+                                           
+                                            @if ($item->status == null)
+                                                <a href="dayoff/{{ $item->id }}/yes" class="btn btn-primary bg-color mx-1 bg-success"
+                                                    data-toggle="tooltip" data-placement="top" title="Approve request dayoff"
+                                                    >
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                                <a href="dayoff/{{ $item->id }}/no" class="btn btn-primary bg-color mx-1 bg-danger"
+                                                    data-toggle="tooltip" data-placement="top" title="Reject request dayoff"
+                                                    >
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            @else 
+                                                <a href="dayoff/{{ $item->id }}/yes" class="not-active btn btn-primary bg-color mx-1 bg-success"
+                                                    data-toggle="tooltip" data-placement="top" title="Approve request dayoff"
+                                                    >
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                                <a href="dayoff/{{ $item->id }}/no" class="not-active btn btn-primary bg-color mx-1 bg-danger"
+                                                    data-toggle="tooltip" data-placement="top" title="Reject request dayoff"
+                                                    >
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            @endif
+                                            
 
-
-                                            <a href="#" class="btn btn-primary bg-color "
-                                                onclick="deleteJS({{ $item->id }})">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                            
                                         </td>
                                     </tr>
 
@@ -100,6 +114,7 @@
                                     <th>Fullname</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th>Number dayoff</th>
                                     <th>Reason</th>
                                     <th>Status</th>
                                     <th>Option</th>
@@ -120,8 +135,8 @@
 
 
 
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
+    <!-- Modal HTML DELETE-->
+    {{-- <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,7 +152,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @endsection
 
 

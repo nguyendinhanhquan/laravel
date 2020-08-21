@@ -26,7 +26,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Detai to year</h3>
+                    <h3 class="card-title">Detai to month</h3>
 
                 </div>
                 <!-- /.card-header -->

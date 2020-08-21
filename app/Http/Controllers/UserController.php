@@ -102,12 +102,16 @@ class UserController extends Controller
         $user->issue_place = $request ->input('IPlace');
         $user->university = $request ->input('university');
         $user->year_of_graduate = $request ->input('YOG');
-       // $user->avatar = $request ->input('avatar');
         $user->note = $request ->input('note');
         $user->birthday = $birthday;
         $user->issue_date = $IDate;
         $user->start_job_at_company = $StartJob;
         
+        $request->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'email' => 'email:rfc,dns',
+        ], [
+        ]);
         
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;

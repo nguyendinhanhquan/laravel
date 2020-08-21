@@ -77,29 +77,41 @@ class PasswordController extends Controller
         //
         $user = Users::find($id);
         $old_password = $request->old_password;
-        if (Hash::check($old_password, $user->password)) 
-        {
+        $new_password = $request->new_password;
+        $confirm_password = $request->confirm_password;
+       
+
+        if (Hash::check($old_password, $user->password)) {
             $request->validate([
                 'new_password' => 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/',
+                'confirm_password' => 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/',
             ], [
                 'new_password.regex' => 'Password minimum 7 character, at least one uppercase letter, one number and one special character',
-                
-            ]);
+                'confirm_password.regex' => 'Confirm password minimum 7 character, at least one uppercase letter, one number and one special character',
 
+            ]);
+            if ($old_password == $new_password) {
+                $request->session()->flash('status', 'Old password must be difference new password');
+                return redirect('password');
+            }
+            if ($new_password != $confirm_password) {
+                $request->session()->flash('status', 'Confirm password must be same value with new password.');
+                return redirect('password');
+            }
             $user->password = Hash::make($request->new_password);
             $user->save();
-            if($user->save()){
+            if ($user->save()) {
                 $request->session()->flash('status', 'Change password complete');
-                return redirect('home');
+                $request->session()->flush();
+                return redirect('login');
             }
             return redirect('password');
-        }
-        else
-        {
+        } else {
             $request->session()->flash('status', 'Wrong password');
             return redirect('password');
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -36,7 +36,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="change_user_pass/{{ $data->id }}" method="post" enctype="multipart/form-data">
+                    <form id="change_password" role="form" action="change_user_pass/{{ $data->id }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" placeholder="" value="{{ $data->id }}">
 
@@ -50,7 +51,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Old Password</label>
                                 <input type="password" class="form-control" id="exampleInputEmail1" value=""
-                                    name="old_password" required>
+                                    name="old_password" id="old_password" required>
                             </div>
                             @if (Session::get('status'))
                                 <div class="alert alert-danger" role="alert">
@@ -60,8 +61,14 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">New Password</label>
-                                <input type="password" class="form-control" id="exampleInputEmail1" value=""
-                                    name="new_password" required>
+                                <input type="password" class="form-control" id="new_password" value="" name="new_password"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirm_password" value=""
+                                    name="confirm_password" required>
                             </div>
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger" role="alert">

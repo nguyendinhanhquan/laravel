@@ -61,18 +61,31 @@
                                     <td class="text-center">
 
                                         @if ($item->status === 1)
-                                            <p class="text-success"> <i class="fas fa-check"></i></p>
+                                            <p  data-toggle="tooltip" data-placement="top" title="Admin approve" class="text-success"> <i class="fas fa-check"></i></p>
                                         @elseif ($item->status === 0 )
-                                            <p class="text-danger"><i class="fas fa-times"></i></p>
+                                            <p  data-toggle="tooltip" data-placement="top" title="Admin reject" class="text-danger"><i class="fas fa-times"></i></p>
                                         @else
-                                            <b><p class="text-info">Wating ...</p></b>
+                                            <b><p  data-toggle="tooltip" data-placement="top" title="Request is sending to admin" class="text-info">Wating ...</p></b>
                                         @endif
 
                                     </td>
                                     <td class="option">
-                                        <a href="#" class="btn btn-primary bg-color" onclick="deleteJS({{ $item->id }})">
+                                        {{-- <a href="#" class="btn btn-primary bg-color" onclick="deleteJS({{ $item->id }})">
                                             <i class="fas fa-trash"></i>
-                                        </a>
+                                        </a> --}}
+                                        @if ($item->status === null)
+                                            <a href="#" class="btn btn-primary bg-color" onclick="deleteJS({{ $item->id }})"
+                                                data-toggle="tooltip" data-placement="top" title="Delete request"
+                                                >
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        @else
+                                            <a  class="btn btn-primary bg-color" style="opacity: 0.7; color: white"
+                                            data-toggle="tooltip" data-placement="top" title="Delete request"
+                                            >
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

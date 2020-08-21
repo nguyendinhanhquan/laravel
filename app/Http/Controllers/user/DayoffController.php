@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dayoff;
+use App\Overtime;
 
 
 class DayoffController extends Controller
@@ -92,6 +93,9 @@ class DayoffController extends Controller
     public function store(Request $request)
     {
         //
+
+        
+
         $dayoff = new Dayoff;
         $startDate = $request->startDate;
         $endDate =  $request->endDate;
@@ -100,11 +104,11 @@ class DayoffController extends Controller
         $endDate = date_format(date_create($endDate),'Y-m-d');
         // dd($startDate < $endDate);
 
-        if($startDate < $endDate){
+        if($startDate <= $endDate){
             //Tính số ngày nghỉ
             $start_time = \Carbon\Carbon::parse($startDate);
             $finish_time = \Carbon\Carbon::parse($endDate);
-            $number_dayoff = $start_time->diffInDays($finish_time, false);
+            $number_dayoff = $start_time->diffInDays($finish_time, false) + 1;
 
         
             $dayoff->user_id = session('id');
@@ -117,7 +121,7 @@ class DayoffController extends Controller
             return redirect('user_show_dayoff');
         }else
         {
-            $request->session()->flash('status','Selecting invalid date');
+            $request->session()->flash('status','Selecting invalid date !');
             return view('user.dayoff.new_dayoff');
         };
     }

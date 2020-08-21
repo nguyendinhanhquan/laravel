@@ -40,7 +40,7 @@
 
 
                             <tr>
-                                <th>ID </th>
+                                <th>ID Task</th>
                                 <th>Day OT</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
@@ -55,32 +55,59 @@
 
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ date_format(date_create($item->date_ot), 'd-m-Y') }}</td>
-                                    <td>{{ date_format(date_create($item->start_time), 'H:i') }}</td>
-                                    <td>{{ date_format(date_create($item->end_time), 'H:i') }}</td>
-                                    <td>{{ $item->total_time }} minutes</td>
+                                    <td>
+                                        @if ($item->date_ot != null)
+                                         {{ date_format(date_create($item->date_ot), 'd-m-Y') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->start_time != null)
+                                            {{ date_format(date_create($item->start_time), 'H:i') }}
+                                        @else
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->start_time != null)
+                                            {{ date_format(date_create($item->end_time), 'H:i') }}
+                                        @else
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->total_time != 0)
+                                            {{ $item->total_time }} minutes
+                                        @endif
+                                    </td>
                                     <td>{{ $item->task_name }}</td>
                                     <td class="text-center">
 
                                         @if ($item->status === 1)
-                                            <p class="text-success"> <i class="fas fa-check"></i></p>
+                                            <p data-toggle="tooltip" data-placement="top" title="Admin reject" class="text-success"> <i class="fas fa-check"></i></p>
                                         @elseif ($item->status === 0 )
-                                            <p class="text-danger"><i class="fas fa-times"></i></p>
+                                            <p data-toggle="tooltip" data-placement="top" title="Admin approve" class="text-danger"><i class="fas fa-times"></i></p>
+                                        @elseif ($item->status === 3 )
+                                            <b >
+                                                <p data-toggle="tooltip" data-placement="top" title="Task is sending to admin" class="text-warning">Sending</p>
+                                            </b>
                                         @else
-                                            <b><p class="text-info">Wating ...</p></b>
+                                            <b >
+                                                <p data-toggle="tooltip" data-placement="top" title="New task" class="text-info">New</p>
+                                            </b>
                                         @endif
 
                                     </td>
                                     <td class="option">
-                                        <a href="my-task/{{ $item->id }}" class="btn btn-primary bg-color" >
+                                        <a href="my-task/{{ $item->id }}" class="btn btn-primary bg-color"
+                                            data-toggle="tooltip" data-placement="top" title="Task detail"
+                                            >
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <a href="#" class="btn btn-primary bg-color" onclick="deleteJS({{ $item->id }})">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
+
                                     </td>
                                 </tr>
                             @endforeach
+
 
                         </tbody>
 
@@ -94,7 +121,7 @@
     </div>
 
     <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
+    {{-- <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,14 +137,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 
 
 @section('script')
 
-   
+
     <!-- DataTables -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -135,7 +162,9 @@
                 "responsive": true,
                 "autoWidth": false,
                 "searching": false,
-                
+                "order": [
+                    [0, "desc"]
+                ]
 
             });
             $('#example2').DataTable({
@@ -156,7 +185,7 @@
 
             $('#reservationdate1').datetimepicker({
                 format: "DD-MM-YYYY",
-                
+
             })
 
             $('#reservationdate2').datetimepicker({

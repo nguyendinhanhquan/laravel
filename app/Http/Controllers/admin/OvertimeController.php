@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Overtime;
+use App\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Overtime;
-use Carbon\Carbon;
 
 class OvertimeController extends Controller
 {
@@ -19,22 +19,29 @@ class OvertimeController extends Controller
     {
         $data = DB::table('users_tbl')
             ->join('overtime_tbl', 'users_tbl.id', '=', 'overtime_tbl.user_id')
-            ->select( DB::raw('
+            ->select(DB::raw('
             fullname,
-            YEAR(date_ot) as year , 
-            MONTH(date_ot) as month , 
+            YEAR(date_ot) as year ,
+            MONTH(date_ot) as month ,
             SUM(total_time) AS total'))
-            ->where('status',1)
-            ->groupBy('year','month','fullname')
+            ->where('status', 1)
+            ->groupBy('year', 'month', 'fullname')
             ->get();
 
-        return view('admin.overtime.total_time',['data'=>$data]);
+        return view('admin.overtime.total_time', ['data' => $data]);
+    }
+
+    public function newtask()
+    {
+        //
+        // $user = Users::all();
+        $user = Users::where('id', '!=', 1 )->get();
+        return view('admin.overtime.new_task', ['user' => $user]);
     }
 
     public function index()
     {
         //
-       
 
         $data = DB::table('users_tbl')
             ->join('overtime_tbl', 'users_tbl.id', '=', 'overtime_tbl.user_id')
@@ -42,7 +49,7 @@ class OvertimeController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('admin.overtime.list_task',['data'=>$data]);
+        return view('admin.overtime.list_task', ['data' => $data]);
     }
 
     /**
@@ -64,6 +71,20 @@ class OvertimeController extends Controller
     public function store(Request $request)
     {
         //
+        foreach ($request->input('user') as $user) {
+            $overtime = new Overtime;
+
+            $overtime->date_ot = null;
+            $overtime->start_time = null;
+            $overtime->end_time = null;
+            $overtime->total_time = 0;
+            $overtime->user_id = $user;
+            $overtime->place_ot = $request->place_ot;
+            $overtime->task_name = $request->task_name;
+            $overtime->save();
+        }
+        return redirect('list-task');
+
     }
 
     /**
@@ -75,8 +96,8 @@ class OvertimeController extends Controller
     public function show($id)
     {
         //
-        $data = Overtime::where('id',$id)->get();
-        return view('admin.overtime.list_task_detail',['data'=>$data]);
+        $data = Overtime::where('id', $id)->get();
+        return view('admin.overtime.list_task_detail', ['data' => $data]);
     }
 
     /**
@@ -104,13 +125,15 @@ class OvertimeController extends Controller
 
         $overtime->feedback = $request->feedback;
 
-        if($request->status == 'approve')
-        {
+        if ($request->status == null) {
+            return redirect('list-task');
+        }
+
+        if ($request->status == 'approve') {
             $overtime->status = 1;
             $overtime->save();
             return redirect('list-task');
-        }else
-        {
+        } else {
             $overtime->status = 0;
             $overtime->save();
             return redirect('list-task');
@@ -124,11 +147,19 @@ class OvertimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request ,$id)
+    public function destroy(Request $request, $id)
     {
         //
-        Overtime::destroy($id);
-        $request->session()->flash('status','Delete successful');
-        return redirect('list-task');
+        if(Overtime::find($id)->status == null)
+        {
+            Overtime::destroy($id);
+            $request->session()->flash('status', 'Delete successful');
+            return redirect('list-task');
+        }else
+        {
+            $request->session()->flash('error-delete', "You cann't delete this record");
+            return redirect('list-task');
+        }
+        
     }
 }

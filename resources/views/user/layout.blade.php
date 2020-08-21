@@ -50,9 +50,9 @@
 
     
     <!-- Right navbar links -->
-    {{-- <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -110,36 +110,32 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> --}}
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-toggle="tooltip" data-placement="left" title="Notify">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          @if ($user_task > 0)
+            <span class="badge badge-danger navbar-badge">
+              {{$user_task}}
+            </span>
+          @endif
+        
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">{{$user_task}} Task</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+          <a href="{{ url('my-task') }}" class="dropdown-item">
+            <i class="fas fas fa-clock mr-2"></i> {{$user_task}} task overtime
+            {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          
+          {{-- <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
         </div>
       </li>
       
-    </ul> --}}
+    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -201,12 +197,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{ url('new-task') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New task</p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a href="{{ url('my-task') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -373,8 +369,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src={{ asset("dist/js/demo.js") }}></script>
 
-<!-- My Javascript -->
-<script src={{ asset("js/myjs.js") }}></script>
+
+
+<!-- JQuery Validator -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+<!-- My Script JS -->
+<script src={{ asset('js/myjs.js') }}></script>
 
 
 <section class="header">
